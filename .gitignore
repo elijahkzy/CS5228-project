@@ -1,0 +1,27 @@
+# Python environments and caches
+.venv/
+__pycache__/
+*.py[cod]
+
+# Local Jupyter/IPython runtime files
+.ipython/
+.jupyter/
+.jupyter-data/
+.jupyter-runtime/
+.ipynb_checkpoints/
+
+# Operating-system and editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Local secrets
+.env
+.env.*
+*.key
+*.pem
+
+# Local installer downloads
+gh_*_windows_amd64.msi
+gh_*_windows_amd64.zip
