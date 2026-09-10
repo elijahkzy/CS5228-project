@@ -1,0 +1,123 @@
+feature,feature_group,dtype,description,training_notes
+ROW_ID,identifier,int64,"Identifier retained for ordering, joins, and diagnostics",Do not treat numeric-looking identifiers as continuous
+RENT_APPROVAL_DATE,time,datetime64[us],Rental approval date or derived trend/seasonality feature,Tree models cannot reliably extrapolate beyond observed time
+TOWN,core property,string,Cleaned core rental or derived property feature,Review categorical encoding and missing values in the model pipeline
+BLOCK,identifier,string,"Identifier retained for ordering, joins, and diagnostics",Do not treat numeric-looking identifiers as continuous
+STREET,identifier,string,"Identifier retained for ordering, joins, and diagnostics",Do not treat numeric-looking identifiers as continuous
+FLAT_TYPE,core property,string,Cleaned core rental or derived property feature,Review categorical encoding and missing values in the model pipeline
+FLAT_MODEL,core property,string,Cleaned core rental or derived property feature,Review categorical encoding and missing values in the model pipeline
+FLOOR_AREA_SQM,core property,float64,Cleaned core rental or derived property feature,Review categorical encoding and missing values in the model pipeline
+LEASE_COMMENCE_DATE,core property,int64,Cleaned core rental or derived property feature,Review categorical encoding and missing values in the model pipeline
+RENT_YEAR,time,Int64,Rental approval date or derived trend/seasonality feature,Tree models cannot reliably extrapolate beyond observed time
+RENT_MONTH,time,Int64,Rental approval date or derived trend/seasonality feature,Tree models cannot reliably extrapolate beyond observed time
+RENT_QUARTER,time,Int64,Rental approval date or derived trend/seasonality feature,Tree models cannot reliably extrapolate beyond observed time
+MONTH_INDEX,time,Int64,Rental approval date or derived trend/seasonality feature,Tree models cannot reliably extrapolate beyond observed time
+MONTH_SIN,time,float64,Rental approval date or derived trend/seasonality feature,Tree models cannot reliably extrapolate beyond observed time
+MONTH_COS,time,float64,Rental approval date or derived trend/seasonality feature,Tree models cannot reliably extrapolate beyond observed time
+LEASE_AGE,core property,Int64,Cleaned core rental or derived property feature,Review categorical encoding and missing values in the model pipeline
+REMAINING_LEASE_PROXY,core property,Int64,Cleaned core rental or derived property feature,Review categorical encoding and missing values in the model pipeline
+ADDRESS_KEY,identifier,string,"Identifier retained for ordering, joins, and diagnostics",Do not treat numeric-looking identifiers as continuous
+POSTAL_CODE,identifier,string,"Identifier retained for ordering, joins, and diagnostics",Do not treat numeric-looking identifiers as continuous
+LATITUDE,HDB block,float64,HDB block or geographic attribute,HDB -1 sentinels converted to missing
+LONGITUDE,HDB block,float64,HDB block or geographic attribute,HDB -1 sentinels converted to missing
+MAX_FLOOR,HDB block,float64,HDB block or geographic attribute,HDB -1 sentinels converted to missing
+YEAR_COMPLETED,HDB block,float64,HDB block or geographic attribute,HDB -1 sentinels converted to missing
+SUBZONE,HDB block,string,HDB block or geographic attribute,HDB -1 sentinels converted to missing
+PLANNING_AREA,HDB block,string,HDB block or geographic attribute,HDB -1 sentinels converted to missing
+REGION,HDB block,string,HDB block or geographic attribute,HDB -1 sentinels converted to missing
+HDB_BLOCK_MATCHED,core property,int8,Cleaned core rental or derived property feature,Review categorical encoding and missing values in the model pipeline
+BUILDING_AGE,HDB block,Float64,HDB block or geographic attribute,HDB -1 sentinels converted to missing
+NEAREST_OPEN_MRT_KM,MRT accessibility,float64,"Nearest-station, network, or station-busyness feature","Ridership is a static May-Jul 2026 proxy, not historical"
+N_OPEN_MRT_WITHIN_0P5KM,MRT accessibility,int64,"Nearest-station, network, or station-busyness feature","Ridership is a static May-Jul 2026 proxy, not historical"
+N_OPEN_MRT_WITHIN_0P8KM,MRT accessibility,int64,"Nearest-station, network, or station-busyness feature","Ridership is a static May-Jul 2026 proxy, not historical"
+N_OPEN_MRT_WITHIN_1P0KM,MRT accessibility,int64,"Nearest-station, network, or station-busyness feature","Ridership is a static May-Jul 2026 proxy, not historical"
+N_OPEN_MRT_WITHIN_2P0KM,MRT accessibility,int64,"Nearest-station, network, or station-busyness feature","Ridership is a static May-Jul 2026 proxy, not historical"
+NEAREST_MRT_NAME,MRT accessibility,str,"Nearest-station, network, or station-busyness feature","Ridership is a static May-Jul 2026 proxy, not historical"
+NEAREST_MRT_N_LINES,MRT accessibility,int64,"Nearest-station, network, or station-busyness feature","Ridership is a static May-Jul 2026 proxy, not historical"
+NEAREST_MRT_IS_INTERCHANGE,MRT accessibility,int64,"Nearest-station, network, or station-busyness feature","Ridership is a static May-Jul 2026 proxy, not historical"
+NEAREST_MRT_PV_MONTHS_AVAILABLE,MRT accessibility,int64,"Nearest-station, network, or station-busyness feature","Ridership is a static May-Jul 2026 proxy, not historical"
+NEAREST_MRT_PV_TOTAL_STATIC_2026,MRT accessibility,float64,"Nearest-station, network, or station-busyness feature","Ridership is a static May-Jul 2026 proxy, not historical"
+NEAREST_MRT_PV_WEEKDAY_TOTAL_STATIC_2026,MRT accessibility,float64,"Nearest-station, network, or station-busyness feature","Ridership is a static May-Jul 2026 proxy, not historical"
+NEAREST_MRT_PV_WEEKEND_TOTAL_STATIC_2026,MRT accessibility,float64,"Nearest-station, network, or station-busyness feature","Ridership is a static May-Jul 2026 proxy, not historical"
+NEAREST_MRT_PV_AM_PEAK_TOTAL_STATIC_2026,MRT accessibility,float64,"Nearest-station, network, or station-busyness feature","Ridership is a static May-Jul 2026 proxy, not historical"
+NEAREST_MRT_PV_PM_PEAK_TOTAL_STATIC_2026,MRT accessibility,float64,"Nearest-station, network, or station-busyness feature","Ridership is a static May-Jul 2026 proxy, not historical"
+NEAREST_MRT_PV_BUSIEST_HOUR_STATIC_2026,MRT accessibility,float64,"Nearest-station, network, or station-busyness feature","Ridership is a static May-Jul 2026 proxy, not historical"
+NEAREST_MRT_PV_MISSING,MRT accessibility,int8,"Nearest-station, network, or station-busyness feature","Ridership is a static May-Jul 2026 proxy, not historical"
+RAIL_KM_TO_RAFFLES_PLACE,MRT accessibility,float64,"Nearest-station, network, or station-busyness feature","Ridership is a static May-Jul 2026 proxy, not historical"
+RAIL_KM_TO_ORCHARD,MRT accessibility,float64,"Nearest-station, network, or station-busyness feature","Ridership is a static May-Jul 2026 proxy, not historical"
+RAIL_KM_TO_JURONG_EAST,MRT accessibility,float64,"Nearest-station, network, or station-busyness feature","Ridership is a static May-Jul 2026 proxy, not historical"
+RAIL_KM_TO_WOODLANDS,MRT accessibility,float64,"Nearest-station, network, or station-busyness feature","Ridership is a static May-Jul 2026 proxy, not historical"
+NEAREST_MALL_KM,mall accessibility,float64,Mall proximity or Wikipedia-derived size feature,Wikipedia attributes have incomplete coverage
+N_MALL_WITHIN_0P5KM,mall accessibility,int64,Mall proximity or Wikipedia-derived size feature,Wikipedia attributes have incomplete coverage
+N_MALL_WITHIN_1P0KM,mall accessibility,int64,Mall proximity or Wikipedia-derived size feature,Wikipedia attributes have incomplete coverage
+N_MALL_WITHIN_2P0KM,mall accessibility,int64,Mall proximity or Wikipedia-derived size feature,Wikipedia attributes have incomplete coverage
+NEAREST_MALL_NAME,mall accessibility,str,Mall proximity or Wikipedia-derived size feature,Wikipedia attributes have incomplete coverage
+NEAREST_MALL_WIKI_STATUS,mall accessibility,str,Mall proximity or Wikipedia-derived size feature,Wikipedia attributes have incomplete coverage
+NEAREST_MALL_FLOORS,mall accessibility,float64,Mall proximity or Wikipedia-derived size feature,Wikipedia attributes have incomplete coverage
+NEAREST_MALL_NUM_STORES,mall accessibility,float64,Mall proximity or Wikipedia-derived size feature,Wikipedia attributes have incomplete coverage
+NEAREST_MALL_NUM_ANCHORS,mall accessibility,float64,Mall proximity or Wikipedia-derived size feature,Wikipedia attributes have incomplete coverage
+NEAREST_MALL_OPENING_YEAR,mall accessibility,float64,Mall proximity or Wikipedia-derived size feature,Wikipedia attributes have incomplete coverage
+NEAREST_MALL_FLOOR_AREA_SQM,mall accessibility,float64,Mall proximity or Wikipedia-derived size feature,Wikipedia attributes have incomplete coverage
+NEAREST_MALL_DETAILS_MISSING,mall accessibility,int8,Mall proximity or Wikipedia-derived size feature,Wikipedia attributes have incomplete coverage
+MALL_FLOOR_AREA_SUM_WITHIN_2KM,mall accessibility,float64,Mall proximity or Wikipedia-derived size feature,Wikipedia attributes have incomplete coverage
+MALL_STORES_SUM_WITHIN_2KM,mall accessibility,float64,Mall proximity or Wikipedia-derived size feature,Wikipedia attributes have incomplete coverage
+NEAREST_PRIMARY_SCHOOL_KM,school accessibility,float64,"School proximity, count, fee tier, or entry-score feature",Current school snapshot; entry-score meaning varies by level
+N_PRIMARY_SCHOOL_WITHIN_0P5KM,school accessibility,int64,"School proximity, count, fee tier, or entry-score feature",Current school snapshot; entry-score meaning varies by level
+N_PRIMARY_SCHOOL_WITHIN_1P0KM,school accessibility,int64,"School proximity, count, fee tier, or entry-score feature",Current school snapshot; entry-score meaning varies by level
+N_PRIMARY_SCHOOL_WITHIN_2P0KM,school accessibility,int64,"School proximity, count, fee tier, or entry-score feature",Current school snapshot; entry-score meaning varies by level
+NEAREST_SECONDARY_SCHOOL_KM,school accessibility,float64,"School proximity, count, fee tier, or entry-score feature",Current school snapshot; entry-score meaning varies by level
+N_SECONDARY_SCHOOL_WITHIN_1P0KM,school accessibility,int64,"School proximity, count, fee tier, or entry-score feature",Current school snapshot; entry-score meaning varies by level
+N_SECONDARY_SCHOOL_WITHIN_2P0KM,school accessibility,int64,"School proximity, count, fee tier, or entry-score feature",Current school snapshot; entry-score meaning varies by level
+NEAREST_JUNIOR_COLLEGE_KM,school accessibility,float64,"School proximity, count, fee tier, or entry-score feature",Current school snapshot; entry-score meaning varies by level
+N_JUNIOR_COLLEGE_WITHIN_2P0KM,school accessibility,int64,"School proximity, count, fee tier, or entry-score feature",Current school snapshot; entry-score meaning varies by level
+N_JUNIOR_COLLEGE_WITHIN_4P0KM,school accessibility,int64,"School proximity, count, fee tier, or entry-score feature",Current school snapshot; entry-score meaning varies by level
+BEST_SECONDARY_PG3_MAX_WITHIN_2KM,school accessibility,float64,"School proximity, count, fee tier, or entry-score feature",Current school snapshot; entry-score meaning varies by level
+N_HIGH_FEE_SECONDARY_WITHIN_2KM,school accessibility,int64,"School proximity, count, fee tier, or entry-score feature",Current school snapshot; entry-score meaning varies by level
+BEST_JC_L1R5_MAX_WITHIN_4KM,school accessibility,float64,"School proximity, count, fee tier, or entry-score feature",Current school snapshot; entry-score meaning varies by level
+PA_ONEMAP_QUERY,planning-area demographics,str,2020 planning-area demographic feature,Static census snapshot; some small areas have missing values
+PA_YEAR,planning-area demographics,int64,2020 planning-area demographic feature,Static census snapshot; some small areas have missing values
+PA_DATA_STATUS,planning-area demographics,str,2020 planning-area demographic feature,Static census snapshot; some small areas have missing values
+PA_TOTAL_POPULATION,planning-area demographics,float64,2020 planning-area demographic feature,Static census snapshot; some small areas have missing values
+PA_PCT_AGE_0_14,planning-area demographics,float64,2020 planning-area demographic feature,Static census snapshot; some small areas have missing values
+PA_PCT_AGE_15_64,planning-area demographics,float64,2020 planning-area demographic feature,Static census snapshot; some small areas have missing values
+PA_PCT_AGE_65_PLUS,planning-area demographics,float64,2020 planning-area demographic feature,Static census snapshot; some small areas have missing values
+PA_UNEMPLOYMENT_RATE,planning-area demographics,float64,2020 planning-area demographic feature,Static census snapshot; some small areas have missing values
+PA_TOTAL_HOUSEHOLDS,planning-area demographics,float64,2020 planning-area demographic feature,Static census snapshot; some small areas have missing values
+PA_PCT_HDB,planning-area demographics,float64,2020 planning-area demographic feature,Static census snapshot; some small areas have missing values
+PA_PCT_PRIVATE_HOUSING,planning-area demographics,float64,2020 planning-area demographic feature,Static census snapshot; some small areas have missing values
+PA_PCT_HH_INCOME_GE_10K,planning-area demographics,float64,2020 planning-area demographic feature,Static census snapshot; some small areas have missing values
+PA_PCT_HH_INCOME_BELOW_2K,planning-area demographics,float64,2020 planning-area demographic feature,Static census snapshot; some small areas have missing values
+PA_AVG_HOUSEHOLD_SIZE,planning-area demographics,float64,2020 planning-area demographic feature,Static census snapshot; some small areas have missing values
+PA_PCT_CHINESE,planning-area demographics,float64,2020 planning-area demographic feature,Static census snapshot; some small areas have missing values
+PA_PCT_MALAY,planning-area demographics,float64,2020 planning-area demographic feature,Static census snapshot; some small areas have missing values
+PA_PCT_INDIAN,planning-area demographics,float64,2020 planning-area demographic feature,Static census snapshot; some small areas have missing values
+PA_PCT_OWNER_OCCUPIED,planning-area demographics,float64,2020 planning-area demographic feature,Static census snapshot; some small areas have missing values
+PA_PCT_PMET,planning-area demographics,float64,2020 planning-area demographic feature,Static census snapshot; some small areas have missing values
+SZ_YEAR,subzone demographics,int64,2020 subzone demographic feature,Static census snapshot
+SZ_DATA_STATUS,subzone demographics,str,2020 subzone demographic feature,Static census snapshot
+SZ_PLANNING_AREA,subzone demographics,str,2020 subzone demographic feature,Static census snapshot
+SZ_TOTAL_POPULATION,subzone demographics,int64,2020 subzone demographic feature,Static census snapshot
+SZ_PCT_AGE_0_14,subzone demographics,float64,2020 subzone demographic feature,Static census snapshot
+SZ_PCT_AGE_15_64,subzone demographics,float64,2020 subzone demographic feature,Static census snapshot
+SZ_PCT_AGE_65_PLUS,subzone demographics,float64,2020 subzone demographic feature,Static census snapshot
+SZ_PCT_MALE,subzone demographics,float64,2020 subzone demographic feature,Static census snapshot
+PA_DEMOGRAPHICS_MATCHED,planning-area demographics,int8,2020 planning-area demographic feature,Static census snapshot; some small areas have missing values
+SZ_DEMOGRAPHICS_MATCHED,subzone demographics,int8,2020 subzone demographic feature,Static census snapshot
+COE_PREMIUM_MEAN_LAG1,macroeconomic,float64,One-month-lagged monthly market indicator,May proxy for time; validate incrementally
+COE_PREMIUM_MAX_LAG1,macroeconomic,float64,One-month-lagged monthly market indicator,May proxy for time; validate incrementally
+COE_BID_QUOTA_RATIO_LAG1,macroeconomic,float64,One-month-lagged monthly market indicator,May proxy for time; validate incrementally
+STOCK_MARKET_RETURN_LAG1,macroeconomic,float64,One-month-lagged monthly market indicator,May proxy for time; validate incrementally
+STOCK_MARKET_VOLATILITY_LAG1,macroeconomic,float64,One-month-lagged monthly market indicator,May proxy for time; validate incrementally
+ADDRESS_PRIOR_MEDIAN,historical rent,float64,Rental statistic calculated from strictly earlier months,Use time-based validation only; never recompute with validation or test labels
+ADDRESS_LAST_RENT,historical rent,float64,Rental statistic calculated from strictly earlier months,Use time-based validation only; never recompute with validation or test labels
+ADDRESS_PRIOR_MONTHS,historical rent,int32,Rental statistic calculated from strictly earlier months,Use time-based validation only; never recompute with validation or test labels
+ADDRESS_MONTHS_SINCE_LAST,historical rent,float64,Rental statistic calculated from strictly earlier months,Use time-based validation only; never recompute with validation or test labels
+TOWN_FLAT_PRIOR_MEDIAN,historical rent,float64,Rental statistic calculated from strictly earlier months,Use time-based validation only; never recompute with validation or test labels
+TOWN_FLAT_LAST_RENT,historical rent,float64,Rental statistic calculated from strictly earlier months,Use time-based validation only; never recompute with validation or test labels
+TOWN_FLAT_PRIOR_MONTHS,historical rent,int32,Rental statistic calculated from strictly earlier months,Use time-based validation only; never recompute with validation or test labels
+TOWN_FLAT_MONTHS_SINCE_LAST,historical rent,float64,Rental statistic calculated from strictly earlier months,Use time-based validation only; never recompute with validation or test labels
+FLAT_TYPE_PRIOR_MEDIAN,historical rent,float64,Rental statistic calculated from strictly earlier months,Use time-based validation only; never recompute with validation or test labels
+FLAT_TYPE_LAST_RENT,historical rent,float64,Rental statistic calculated from strictly earlier months,Use time-based validation only; never recompute with validation or test labels
+FLAT_TYPE_PRIOR_MONTHS,historical rent,int32,Rental statistic calculated from strictly earlier months,Use time-based validation only; never recompute with validation or test labels
+FLAT_TYPE_MONTHS_SINCE_LAST,historical rent,float64,Rental statistic calculated from strictly earlier months,Use time-based validation only; never recompute with validation or test labels
+MONTHLY_RENT,target,int64,Observed monthly rent in SGD,Training table only

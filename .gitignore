@@ -21,7 +21,11 @@ Thumbs.db
 .env.*
 *.key
 *.pem
+keys.txt
 
 # Local installer downloads
 gh_*_windows_amd64.msi
 gh_*_windows_amd64.zip
+
+# Regenerable data-collection caches
+**/_*_cache/

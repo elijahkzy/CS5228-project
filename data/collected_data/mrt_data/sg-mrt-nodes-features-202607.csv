@@ -1,0 +1,193 @@
+NAME,member_codes,lines,n_lines,status,latitude,longitude,subzone,planning_area,region,is_interchange,pv_tap_in,pv_tap_out,pv_total,pv_weekday_total,pv_weekend_total,pv_am_peak_total,pv_pm_peak_total,pv_busiest_hour,year_month,pv_matched
+admiralty mrt station,ns10,ns,1,open,1.440689,103.800933,woodlands east,woodlands,north region,False,1297451.0,1148371.0,2445822.0,1948912.0,496910.0,545417.0,515983.0,7.0,2026-07,True
+aljunied mrt station,ew9,ew,1,open,1.316389,103.882778,aljunied,geylang,central region,False,725638.0,733965.0,1459603.0,1077763.0,381840.0,255792.0,296343.0,18.0,2026-07,True
+ang mo kio mrt station,cr11;ns16,cr;ns,2,open,1.370017,103.84945,cheng san,ang mo kio,north-east region,True,1274394.0,1408757.0,2683151.0,2104497.0,578654.0,499423.0,571260.0,18.0,2026-07,True
+aviation park mrt station,cr2,cr,1,open,1.37,104.003056,changi airport,changi,east region,False,,,,,,,,,,False
+bahar junction mrt station,js7,js,1,open,1.345422,103.702542,jurong west central,jurong west,west region,False,,,,,,,,,,False
+bartley mrt station,cc12,cc,1,open,1.3425,103.88,bidadari,toa payoh,central region,False,288510.0,255471.0,543981.0,443414.0,100567.0,124610.0,110367.0,7.0,2026-07,True
+bayfront mrt station,cc34;dt16,cc;dt,2,open,1.2825,103.859444,bayfront subzone,downtown core,central region,True,1140191.0,1055521.0,2195712.0,1469332.0,726380.0,166977.0,354622.0,20.0,2026-07,True
+bayshore mrt station,te29,te,1,open,1.314722,103.943611,bayshore,bedok,east region,False,113638.0,113340.0,226978.0,176872.0,50106.0,50030.0,49037.0,8.0,2026-07,True
+beauty world mrt station,dt5,dt,1,open,1.341111,103.775833,anak bukit,bukit timah,central region,False,489944.0,485965.0,975909.0,748425.0,227484.0,180717.0,217511.0,18.0,2026-07,True
+bedok mrt station,ew5,ew,1,open,1.324039,103.930036,bedok north,bedok,east region,False,953023.0,963479.0,1916502.0,1473750.0,442752.0,335207.0,415621.0,18.0,2026-07,True
+bedok north mrt station,dt29,dt,1,open,1.336389,103.917778,kaki bukit,bedok,east region,False,245951.0,224736.0,470687.0,383677.0,87010.0,117395.0,103970.0,8.0,2026-07,True
+bedok reservoir mrt station,dt30,dt,1,open,1.336389,103.933056,bedok reservoir,bedok,east region,False,291533.0,280666.0,572199.0,463450.0,108749.0,139902.0,126479.0,8.0,2026-07,True
+bedok south mrt station,te30,te,1,open,1.316667,103.948333,bayshore,bedok,east region,False,,,,,,,,,,False
+bencoolen mrt station,dt21,dt,1,open,1.298889,103.850278,bencoolen,rochor,central region,False,273500.0,277744.0,551244.0,426409.0,124835.0,85898.0,119049.0,18.0,2026-07,True
+bendemeer mrt station,dt23,dt,1,open,1.313611,103.863056,kallang bahru,kallang,central region,False,144847.0,150752.0,295599.0,251986.0,43613.0,75880.0,83538.0,18.0,2026-07,True
+bishan mrt station,cc15;ns17,cc;ns,2,open,1.351111,103.848333,bishan east,bishan,central region,True,1055298.0,679774.0,1735072.0,1394826.0,340246.0,421782.0,340384.0,8.0,2026-07,True
+boon keng mrt station,ne9,ne,1,open,1.319444,103.861667,bendemeer,kallang,central region,False,769966.0,704179.0,1474145.0,1168484.0,305661.0,302403.0,319987.0,18.0,2026-07,True
+boon lay mrt station,ew27;js8,ew;js,2,open,1.338611,103.705833,jurong west central,jurong west,west region,True,1360735.0,1616001.0,2976736.0,2315632.0,661104.0,546205.0,711199.0,18.0,2026-07,True
+botanic gardens mrt station,cc19;dt9,cc;dt,2,open,1.3225,103.815278,tyersall,tanglin,central region,True,200734.0,211382.0,412116.0,298311.0,113805.0,72010.0,77720.0,18.0,2026-07,True
+braddell mrt station,ns18,ns,1,open,1.340339,103.846725,toa payoh west,toa payoh,central region,False,471019.0,445367.0,916386.0,728659.0,187727.0,189450.0,186072.0,18.0,2026-07,True
+bras basah mrt station,cc2,cc,1,open,1.296944,103.850556,bras basah,museum,central region,False,128187.0,134746.0,262933.0,202402.0,60531.0,43985.0,57903.0,18.0,2026-07,True
+brickland mrt station,ns3a,ns,1,open,1.368611,103.749444,gombak,bukit batok,west region,False,,,,,,,,,,False
+bright hill mrt station,cr13;te7,cr;te,2,open,1.363889,103.834722,upper thomson,bishan,central region,True,210015.0,207009.0,417024.0,339944.0,77080.0,100440.0,88884.0,18.0,2026-07,True
+buangkok mrt station,ne15,ne,1,open,1.382778,103.893056,compassvale,sengkang,north-east region,False,741087.0,743830.0,1484917.0,1160724.0,324193.0,301773.0,319607.0,18.0,2026-07,True
+bugis mrt station,dt14;ew12,dt;ew,2,open,1.300278,103.856111,bugis,downtown core,central region,True,1664227.0,1712045.0,3376272.0,2499588.0,876684.0,411545.0,709093.0,18.0,2026-07,True
+bukit batok mrt station,ns2,ns,1,open,1.349167,103.749722,bukit batok central,bukit batok,west region,False,880168.0,956334.0,1836502.0,1454666.0,381836.0,360201.0,420746.0,18.0,2026-07,True
+bukit batok west mrt station,je3,je,1,open,1.345556,103.739722,bukit batok west,bukit batok,west region,False,,,,,,,,,,False
+bukit brown mrt station,cc18,cc,1,open,1.333611,103.83,mount pleasant,novena,central region,False,,,,,,,,,,False
+bukit gombak mrt station,ns3,ns,1,open,1.358611,103.751667,guilin,bukit batok,west region,False,635835.0,602358.0,1238193.0,966762.0,271431.0,243757.0,251893.0,7.0,2026-07,True
+bukit panjang mrt/lrt station,bp6;dt1,bp;dt,2,open,1.378611,103.761667,gombak,bukit batok,west region,True,1210327.0,1266367.0,2476694.0,1979583.0,497111.0,564971.0,537090.0,18.0,2026-07,True
+buona vista mrt station,cc22;ew21,cc;ew,2,open,1.307333,103.790028,one north,queenstown,central region,True,909379.0,867196.0,1776575.0,1484358.0,292217.0,392584.0,479506.0,18.0,2026-07,True
+caldecott mrt station,cc17;te9,cc;te,2,open,1.337778,103.839444,toa payoh west,toa payoh,central region,True,277005.0,253870.0,530875.0,448021.0,82854.0,140633.0,114909.0,8.0,2026-07,True
+canberra mrt station,ns12,ns,1,open,1.443056,103.829722,sembawang springs,sembawang,north region,False,683682.0,621567.0,1305249.0,1037125.0,268124.0,294009.0,282050.0,7.0,2026-07,True
+cantonment mrt station,cc31,cc,1,open,1.272778,103.836667,everton park,bukit merah,central region,False,,,,,,,,,,False
+cashew mrt station,dt2,dt,1,open,1.368889,103.764722,gombak,bukit batok,west region,False,126461.0,107343.0,233804.0,201824.0,31980.0,66254.0,53451.0,8.0,2026-07,True
+changi airport mrt station,cg2,cg,1,open,1.3575,103.988333,changi airport,changi,east region,False,670313.0,599098.0,1269411.0,908816.0,360595.0,148978.0,197064.0,18.0,2026-07,True
+changi terminal 5 mrt station,cr1;te32,cr;te,2,open,1.324444,103.992778,changi airport,changi,east region,True,,,,,,,,,,False
+chinatown mrt station,dt19;ne4,dt;ne,2,open,1.285,103.843889,pearl's hill,outram,central region,True,1527683.0,1499753.0,3027436.0,2255717.0,771719.0,311927.0,599075.0,18.0,2026-07,True
+chinese garden mrt station,ew25,ew,1,open,1.3425,103.7325,lakeside (leisure),jurong east,west region,False,436090.0,391088.0,827178.0,635146.0,192032.0,195129.0,167298.0,7.0,2026-07,True
+choa chu kang mrt/lrt station,bp1;js1;ns4,bp;js;ns,3,open,1.385,103.744444,choa chu kang central,choa chu kang,west region,True,1160114.0,1265400.0,2425514.0,1915959.0,509555.0,433850.0,545242.0,18.0,2026-07,True
+choa chu kang west mrt station,js2,js,1,open,1.378889,103.739444,peng siang,choa chu kang,west region,False,,,,,,,,,,False
+city hall mrt station,ew13;ns25,ew;ns,2,open,1.293333,103.852222,city hall,downtown core,central region,True,1516797.0,1506941.0,3023738.0,2081894.0,941844.0,316191.0,611792.0,18.0,2026-07,True
+clarke quay mrt station,ne5,ne,1,open,1.288611,103.846667,clarke quay,singapore river,central region,False,446082.0,471492.0,917574.0,723848.0,193726.0,149817.0,219504.0,18.0,2026-07,True
+clementi mrt station,cr17;ew23,cr;ew,2,open,1.315303,103.765244,clementi north,clementi,west region,True,1478856.0,1544470.0,3023326.0,2372195.0,651131.0,592534.0,654632.0,18.0,2026-07,True
+commonwealth mrt station,ew20,ew,1,open,1.3025,103.798056,tanglin halt,queenstown,central region,False,417019.0,421846.0,838865.0,679738.0,159127.0,198801.0,188544.0,18.0,2026-07,True
+corporation mrt station,js5,js,1,open,1.353056,103.713889,wenya,jurong west,west region,False,,,,,,,,,,False
+dakota mrt station,cc8,cc,1,open,1.308333,103.888611,aljunied,geylang,central region,False,243972.0,226151.0,470123.0,363884.0,106239.0,91463.0,94992.0,18.0,2026-07,True
+de1 mrt station,de1,de,1,open,1.399722,103.7525,gali batu,sungei kadut,north region,False,,,,,,,,,,False
+defu mrt station,cr7,cr,1,open,1.362222,103.898889,lorong halus,hougang,north-east region,False,,,,,,,,,,False
+dhoby ghaut mrt station,cc1;ne6;ns24,cc;ne;ns,3,open,1.299444,103.84499999999998,dhoby ghaut,museum,central region,True,1042765.0,974792.0,2017557.0,1487961.0,529596.0,224500.0,440147.0,18.0,2026-07,True
+dover mrt station,ew22,ew,1,open,1.311314,103.778658,singapore polytechnic,queenstown,central region,False,405383.0,422566.0,827949.0,752089.0,75860.0,207862.0,166955.0,8.0,2026-07,True
+downtown mrt station,dt17,dt,1,open,1.279444,103.853056,central subzone,downtown core,central region,False,604503.0,630910.0,1235413.0,1165086.0,70327.0,373032.0,360728.0,18.0,2026-07,True
+elias mrt station,cp2,cp,1,open,1.383889,103.938056,pasir ris west,pasir ris,east region,False,,,,,,,,,,False
+enterprise mrt station,js9,js,1,open,1.332778,103.708611,chin bee,jurong west,west region,False,,,,,,,,,,False
+esplanade mrt station,cc3,cc,1,open,1.293333,103.855556,city hall,downtown core,central region,False,253237.0,236003.0,489240.0,336701.0,152539.0,62149.0,97856.0,18.0,2026-07,True
+eunos mrt station,ew7,ew,1,open,1.319722,103.903056,geylang east,geylang,central region,False,430730.0,481890.0,912620.0,708467.0,204153.0,181509.0,189518.0,18.0,2026-07,True
+expo mrt station,cg1;dt35,cg;dt,2,open,1.335278,103.961944,xilin,tampines,east region,True,482726.0,489412.0,972138.0,752345.0,219793.0,208470.0,243561.0,18.0,2026-07,True
+farrer park mrt station,ne8,ne,1,open,1.312222,103.854167,farrer park,rochor,central region,False,891491.0,969252.0,1860743.0,1298757.0,561986.0,234680.0,352948.0,18.0,2026-07,True
+farrer road mrt station,cc20,cc,1,open,1.317222,103.8075,tyersall,tanglin,central region,False,166187.0,166282.0,332469.0,263139.0,69330.0,68121.0,71133.0,18.0,2026-07,True
+fort canning mrt station,dt20,dt,1,open,1.2925,103.844444,clarke quay,singapore river,central region,False,187744.0,201717.0,389461.0,312541.0,76920.0,75494.0,87750.0,18.0,2026-07,True
+founders' memorial mrt station,te22a,te,1,open,1.290833,103.869167,marina east,marina east,central region,False,,,,,,,,,,False
+gardens by the bay mrt station,te22,te,1,open,1.278333,103.868056,marina south,marina south,central region,False,119268.0,165333.0,284601.0,168589.0,116012.0,11544.0,52181.0,20.0,2026-07,True
+gek poh mrt station,jw1,jw,1,open,1.348333,103.698056,yunnan,jurong west,west region,False,,,,,,,,,,False
+geylang bahru mrt station,dt24,dt,1,open,1.321389,103.871389,geylang bahru,kallang,central region,False,168084.0,159167.0,327251.0,269177.0,58074.0,78399.0,74886.0,8.0,2026-07,True
+great world mrt station,te15,te,1,open,1.295,103.833333,institution hill,river valley,central region,False,298934.0,312687.0,611621.0,472273.0,139348.0,99701.0,128017.0,18.0,2026-07,True
+gul circle mrt station,cr23;ew30,cr;ew,2,open,1.3212,103.6657,gul circle,pioneer,west region,True,142185.0,126770.0,268955.0,225434.0,43521.0,77275.0,77595.0,7.0,2026-07,True
+harbourfront mrt station,cc29;ne1,cc;ne,2,open,1.265278,103.822222,maritime square,bukit merah,central region,True,1602963.0,1585775.0,3188738.0,2307069.0,881669.0,398596.0,652898.0,18.0,2026-07,True
+havelock mrt station,te16,te,1,open,1.287778,103.833611,bukit ho swee,bukit merah,central region,False,258561.0,243899.0,502460.0,383711.0,118749.0,89251.0,106584.0,18.0,2026-07,True
+haw par villa mrt station,cc25,cc,1,open,1.282778,103.781667,pasir panjang 1,queenstown,central region,False,214906.0,198370.0,413276.0,339066.0,74210.0,98717.0,103898.0,18.0,2026-07,True
+hillview mrt station,dt3,dt,1,open,1.3625,103.7675,nature reserve,bukit panjang,west region,False,207430.0,187884.0,395314.0,310887.0,84427.0,90493.0,79848.0,8.0,2026-07,True
+holland village mrt station,cc21,cc,1,open,1.311944,103.796111,leedon park,bukit timah,central region,False,303411.0,321495.0,624906.0,484050.0,140856.0,84530.0,133857.0,18.0,2026-07,True
+hong kah mrt station,js4,js,1,open,1.358056,103.725833,garden,tengah,west region,False,,,,,,,,,,False
+hougang mrt station,cr8;ne14,cr;ne,2,open,1.371389,103.892222,hougang central,hougang,north-east region,True,916837.0,902996.0,1819833.0,1429905.0,389928.0,374771.0,375504.0,18.0,2026-07,True
+hume mrt station,dt4,dt,1,open,1.354444,103.769167,hillview,bukit batok,west region,False,68754.0,67206.0,135960.0,107128.0,28832.0,27253.0,28974.0,18.0,2026-07,True
+jalan besar mrt station,dt22,dt,1,open,1.305556,103.855278,little india,rochor,central region,False,323058.0,346073.0,669131.0,474847.0,194284.0,95914.0,122521.0,18.0,2026-07,True
+joo koon mrt station,ew29,ew,1,open,1.327739,103.678486,joo koon,pioneer,west region,False,506020.0,531257.0,1037277.0,849918.0,187359.0,277792.0,277719.0,7.0,2026-07,True
+jurong east mrt station,ew24;je5;ns1,ew;je;ns,3,open,1.333333,103.742222,jurong gateway,jurong east,west region,True,2102599.0,2130785.0,4233384.0,3267187.0,966197.0,699319.0,1073888.0,18.0,2026-07,True
+jurong hill mrt station,js11,js,1,open,1.318611,103.710278,liu fang,boon lay,west region,False,,,,,,,,,,False
+jurong lake district mrt station,cr19,cr,1,open,1.327222,103.739167,lakeside (business),jurong east,west region,False,,,,,,,,,,False
+jurong pier mrt station,cr21;js12,cr;js,2,open,1.313056,103.710278,jurong port,jurong east,west region,True,,,,,,,,,,False
+jurong town hall mrt station,je6,je,1,open,1.326111,103.746111,international business park,jurong east,west region,False,,,,,,,,,,False
+jurong west mrt station,js6,js,1,open,1.349167,103.708333,boon lay place,jurong west,west region,False,,,,,,,,,,False
+kaki bukit mrt station,dt28,dt,1,open,1.335,103.908889,kaki bukit,bedok,east region,False,363062.0,352402.0,715464.0,581632.0,133832.0,186791.0,170321.0,8.0,2026-07,True
+kallang mrt station,ew10,ew,1,open,1.311469,103.8714,boon keng,kallang,central region,False,374530.0,387176.0,761706.0,551731.0,209975.0,134115.0,151303.0,18.0,2026-07,True
+katong park mrt station,te24,te,1,open,1.297778,103.885278,tanjong rhu,kallang,central region,False,104291.0,103919.0,208210.0,163266.0,44944.0,39956.0,44642.0,18.0,2026-07,True
+kembangan mrt station,ew6,ew,1,open,1.321111,103.913333,kembangan,bedok,east region,False,330521.0,376647.0,707168.0,549171.0,157997.0,143583.0,145783.0,18.0,2026-07,True
+kent ridge mrt station,cc24,cc,1,open,1.293333,103.784444,national university of s'pore,queenstown,central region,False,669075.0,641429.0,1310504.0,1186294.0,124210.0,335044.0,345108.0,18.0,2026-07,True
+keppel mrt station,cc30,cc,1,open,1.27,103.831111,city terminals,bukit merah,central region,False,,,,,,,,,,False
+khatib mrt station,ns14,ns,1,open,1.417167,103.8329,khatib,yishun,north region,False,1110867.0,992825.0,2103692.0,1667094.0,436598.0,458608.0,431960.0,18.0,2026-07,True
+king albert park mrt station,cr15;dt6,cr;dt,2,open,1.335833,103.783611,holland road,bukit timah,central region,True,241067.0,215236.0,456303.0,380164.0,76139.0,93001.0,101463.0,18.0,2026-07,True
+kovan mrt station,ne13,ne,1,open,1.360278,103.885,kovan,hougang,north-east region,False,725840.0,727903.0,1453743.0,1108519.0,345224.0,269521.0,288167.0,18.0,2026-07,True
+kranji mrt station,ns7,ns,1,open,1.425047,103.761853,turf club,sungei kadut,north region,False,893018.0,839036.0,1732054.0,1275013.0,457041.0,320512.0,283546.0,7.0,2026-07,True
+labrador park mrt station,cc27,cc,1,open,1.272222,103.802778,maritime square,bukit merah,central region,False,245776.0,242609.0,488385.0,459077.0,29308.0,163021.0,164358.0,8.0,2026-07,True
+lakeside mrt station,ew26,ew,1,open,1.344589,103.721139,taman jurong,jurong west,west region,False,1077262.0,963445.0,2040707.0,1620804.0,419903.0,471302.0,435199.0,7.0,2026-07,True
+lavender mrt station,ew11,ew,1,open,1.307167,103.863008,lavender,kallang,central region,False,567012.0,595350.0,1162362.0,892840.0,269522.0,199711.0,247172.0,18.0,2026-07,True
+lentor mrt station,te5,te,1,open,1.384722,103.836667,tagore,ang mo kio,north-east region,False,209866.0,211209.0,421075.0,334165.0,86910.0,91450.0,95800.0,18.0,2026-07,True
+little india mrt station,dt12;ne7,dt;ne,2,open,1.306667,103.849722,farrer park,rochor,central region,True,860510.0,923487.0,1783997.0,1259368.0,524629.0,241088.0,335217.0,18.0,2026-07,True
+lorong chuan mrt station,cc14,cc,1,open,1.351667,103.863889,serangoon central,serangoon,north-east region,False,245318.0,232795.0,478113.0,397605.0,80508.0,120696.0,102752.0,8.0,2026-07,True
+loyang mrt station,cr3,cr,1,open,1.371944,103.971944,loyang west,pasir ris,east region,False,,,,,,,,,,False
+macpherson mrt station,cc10;dt26,cc;dt,2,open,1.326667,103.89,macpherson,geylang,central region,True,582194.0,552613.0,1134807.0,898980.0,235827.0,252799.0,266260.0,18.0,2026-07,True
+maju mrt station,cr16,cr,1,open,1.328333,103.776944,holland road,bukit timah,central region,False,,,,,,,,,,False
+marina bay mrt station,cc33;ns27;te20,cc;ns;te,3,open,1.275278,103.854722,central subzone,downtown core,central region,True,197977.0,199497.0,397474.0,322802.0,74672.0,82243.0,114050.0,18.0,2026-07,True
+marina south mrt station,te21,te,1,open,1.273889,103.863056,straits view,straits view,central region,False,,,,,,,,,,False
+marina south pier mrt station,ns28,ns,1,open,1.270944,103.86325,straits view,straits view,central region,False,74757.0,67347.0,142104.0,90905.0,51199.0,26040.0,15017.0,15.0,2026-07,True
+marine parade mrt station,te26,te,1,open,1.3025,103.905,marine parade,marine parade,central region,False,364128.0,368591.0,732719.0,529367.0,203352.0,82341.0,149233.0,18.0,2026-07,True
+marine terrace mrt station,te27,te,1,open,1.306667,103.915,marine parade,marine parade,central region,False,197402.0,186389.0,383791.0,304858.0,78933.0,81306.0,70336.0,7.0,2026-07,True
+marsiling mrt station,ns8,ns,1,open,1.432636,103.774283,woodlands west,woodlands,north region,False,660639.0,516384.0,1177023.0,939791.0,237232.0,259899.0,242105.0,7.0,2026-07,True
+marymount mrt station,cc16,cc,1,open,1.349167,103.839444,upper thomson,bishan,central region,False,244937.0,243102.0,488039.0,402882.0,85157.0,127434.0,107816.0,7.0,2026-07,True
+mattar mrt station,dt25,dt,1,open,1.327222,103.882778,macpherson,geylang,central region,False,137623.0,140527.0,278150.0,225002.0,53148.0,63791.0,61997.0,18.0,2026-07,True
+maxwell mrt station,te18,te,1,open,1.280278,103.843889,chinatown,outram,central region,False,373143.0,358774.0,731917.0,546300.0,185617.0,85393.0,150520.0,18.0,2026-07,True
+mayflower mrt station,te6,te,1,open,1.3725,103.837222,kebun bahru,ang mo kio,north-east region,False,398664.0,374038.0,772702.0,618319.0,154383.0,172457.0,154584.0,18.0,2026-07,True
+mount pleasant mrt station,te10,te,1,open,1.328611,103.835556,mount pleasant,novena,central region,False,,,,,,,,,,False
+mountbatten mrt station,cc7,cc,1,open,1.306389,103.8825,aljunied,geylang,central region,False,185601.0,197314.0,382915.0,284307.0,98608.0,67321.0,76952.0,18.0,2026-07,True
+nanyang crescent mrt station,jw4,jw,1,open,1.348333,103.680833,murai,western water catchment,west region,False,,,,,,,,,,False
+nanyang gateway mrt station,jw3,jw,1,open,1.353611,103.686667,murai,western water catchment,west region,False,,,,,,,,,,False
+napier mrt station,te12,te,1,open,1.306667,103.818889,ridout,tanglin,central region,False,150080.0,158571.0,308651.0,252608.0,56043.0,71469.0,56942.0,8.0,2026-07,True
+newton mrt station,dt11;ns21,dt;ns,2,open,1.313056,103.838333,newton circus,newton,central region,True,1696189.0,1763749.0,3459938.0,2683430.0,776508.0,627964.0,760866.0,18.0,2026-07,True
+nicoll highway mrt station,cc5,cc,1,open,1.299722,103.863611,nicoll,downtown core,central region,False,161239.0,164456.0,325695.0,227973.0,97722.0,51173.0,66397.0,18.0,2026-07,True
+novena mrt station,ns20,ns,1,open,1.320394,103.843689,moulmein,novena,central region,False,1195626.0,1176824.0,2372450.0,1951252.0,421198.0,486132.0,537303.0,18.0,2026-07,True
+one-north mrt station,cc23,cc,1,open,1.299444,103.786944,one north,queenstown,central region,False,419897.0,421388.0,841285.0,783981.0,57304.0,247673.0,261383.0,18.0,2026-07,True
+orchard boulevard mrt station,te13,te,1,open,1.3025,103.823889,one tree hill,river valley,central region,False,133543.0,142474.0,276017.0,217852.0,58165.0,48066.0,51797.0,18.0,2026-07,True
+orchard mrt station,ns22;te14,ns;te,2,open,1.303056,103.831389,paterson,river valley,central region,True,1924726.0,2036833.0,3961559.0,2803090.0,1158469.0,423643.0,760150.0,18.0,2026-07,True
+outram park mrt station,ew16;ne3;te17,ew;ne;te,3,open,1.280556,103.84,people's park,outram,central region,True,1090183.0,1041518.0,2131701.0,1812204.0,319497.0,487923.0,483991.0,18.0,2026-07,True
+pandan reservoir mrt station,je7,je,1,open,1.32,103.745,teban gardens,jurong east,west region,False,,,,,,,,,,False
+pasir panjang mrt station,cc26,cc,1,open,1.276111,103.791389,port,queenstown,central region,False,183730.0,189255.0,372985.0,322610.0,50375.0,98723.0,109765.0,18.0,2026-07,True
+pasir ris east mrt station,cr4,cr,1,open,1.366111,103.961111,pasir ris drive,pasir ris,east region,False,,,,,,,,,,False
+pasir ris mrt station,cp1;cr5;ew1,cp;cr;ew,3,open,1.3724110000000005,103.949369,pasir ris central,pasir ris,east region,True,933005.0,909960.0,1842965.0,1443462.0,399503.0,378777.0,401491.0,18.0,2026-07,True
+paya lebar mrt station,cc9;ew8,cc;ew,2,open,1.317778,103.8925,geylang east,geylang,central region,True,1486305.0,1509847.0,2996152.0,2178197.0,817955.0,424987.0,680594.0,18.0,2026-07,True
+peng kang hill mrt station,jw5,jw,1,open,1.343333,103.678611,murai,western water catchment,west region,False,,,,,,,,,,False
+pioneer mrt station,ew28,ew,1,open,1.337578,103.697217,jurong west central,jurong west,west region,False,990364.0,796498.0,1786862.0,1413934.0,372928.0,425171.0,374927.0,7.0,2026-07,True
+potong pasir mrt station,ne10,ne,1,open,1.331111,103.869167,sennett,toa payoh,central region,False,513165.0,513626.0,1026791.0,821142.0,205649.0,223779.0,215689.0,18.0,2026-07,True
+prince edward road mrt station,cc32,cc,1,open,1.273333,103.847222,central subzone,downtown core,central region,False,,,,,,,,,,False
+promenade mrt station,cc4;dt15,cc;dt,2,open,1.2925,103.860833,marina centre,downtown core,central region,True,662673.0,685976.0,1348649.0,1034458.0,314191.0,217799.0,316613.0,18.0,2026-07,True
+punggol coast mrt station,ne18,ne,1,open,1.415278,103.911111,northshore,punggol,north-east region,False,416198.0,407501.0,823699.0,645457.0,178242.0,161001.0,175644.0,18.0,2026-07,True
+punggol mrt/lrt station,cp4;ne17;ptc,cp;ne;ptc,3,open,1.405278,103.9025,punggol town centre,punggol,north-east region,True,1379539.0,1342210.0,2721749.0,2070510.0,651239.0,433439.0,572802.0,18.0,2026-07,True
+queenstown mrt station,ew19,ew,1,open,1.294442,103.806114,mei chin,queenstown,central region,False,529816.0,499905.0,1029721.0,821241.0,208480.0,225753.0,236147.0,18.0,2026-07,True
+raffles place mrt station,ew14;ns26,ew;ns,2,open,1.283889,103.851389,raffles place,downtown core,central region,True,1698597.0,1702233.0,3400830.0,3091754.0,309076.0,902324.0,989609.0,18.0,2026-07,True
+redhill mrt station,ew18,ew,1,open,1.289722,103.816667,redhill,bukit merah,central region,False,547009.0,571783.0,1118792.0,900265.0,218527.0,258368.0,256549.0,18.0,2026-07,True
+riviera mrt/lrt station,cp3;pe4,cp;pe,2,open,1.394444,103.916111,punggol field,punggol,north-east region,True,58009.0,51486.0,109495.0,82952.0,26543.0,20351.0,19476.0,7.0,2026-07,True
+rochor mrt station,dt13,dt,1,open,1.303764,103.852581,bencoolen,rochor,central region,False,308091.0,321630.0,629721.0,467704.0,162017.0,83473.0,121963.0,18.0,2026-07,True
+sembawang mrt station,ns11,ns,1,open,1.449025,103.820153,sembawang central,sembawang,north region,False,1246223.0,1252723.0,2498946.0,1960308.0,538638.0,515341.0,528586.0,7.0,2026-07,True
+sengkang mrt/lrt station,ne16;stc,ne;stc,2,open,1.391667,103.895556,sengkang town centre,sengkang,north-east region,True,1405689.0,1446433.0,2852122.0,2238721.0,613401.0,518068.0,625382.0,18.0,2026-07,True
+serangoon mrt station,cc13;ne12,cc;ne,2,open,1.349167,103.873611,upper paya lebar,serangoon,north-east region,True,1764360.0,1820821.0,3585181.0,2745867.0,839314.0,583086.0,780130.0,18.0,2026-07,True
+serangoon north mrt station,cr9,cr,1,open,1.370556,103.873611,serangoon garden,serangoon,north-east region,False,,,,,,,,,,False
+shenton way mrt station,te19,te,1,open,1.2775,103.850833,central subzone,downtown core,central region,False,389426.0,398904.0,788330.0,731228.0,57102.0,251831.0,246741.0,18.0,2026-07,True
+siglap mrt station,te28,te,1,open,1.309722,103.928889,frankel,bedok,east region,False,126621.0,138064.0,264685.0,207976.0,56709.0,51175.0,55117.0,18.0,2026-07,True
+simei mrt station,ew3,ew,1,open,1.343444,103.953172,simei,tampines,east region,False,527614.0,544378.0,1071992.0,843387.0,228605.0,195246.0,233690.0,18.0,2026-07,True
+sixth avenue mrt station,dt7,dt,1,open,1.330833,103.7975,coronation road,bukit timah,central region,False,120539.0,143399.0,263938.0,215370.0,48568.0,62747.0,63685.0,18.0,2026-07,True
+somerset mrt station,ns23,ns,1,open,1.300514,103.839028,somerset,orchard,central region,False,1015241.0,1059683.0,2074924.0,1523029.0,551895.0,188805.0,450878.0,18.0,2026-07,True
+springleaf mrt station,te4,te,1,open,1.397778,103.818333,springleaf,yishun,north region,False,185494.0,177617.0,363111.0,282306.0,80805.0,72294.0,84574.0,18.0,2026-07,True
+stadium mrt station,cc6,cc,1,open,1.302778,103.875278,tanjong rhu,kallang,central region,False,339594.0,342654.0,682248.0,335975.0,346273.0,42903.0,107501.0,20.0,2026-07,True
+stevens mrt station,dt10;te11,dt;te,2,open,1.32,103.826111,nassim,tanglin,central region,True,141121.0,105739.0,246860.0,201284.0,45576.0,58987.0,46997.0,7.0,2026-07,True
+sungei bedok mrt station,dt37;te31,dt;te,2,open,1.320278,103.956944,bayshore,bedok,east region,True,,,,,,,,,,False
+sungei kadut mrt station,de2;ns6,de;ns,2,open,1.413333,103.748889,pang sua,sungei kadut,north region,True,,,,,,,,,,False
+tai seng mrt station,cc11,cc,1,open,1.335833,103.887778,joo seng,toa payoh,central region,False,610645.0,618875.0,1229520.0,1040230.0,189290.0,325444.0,353465.0,18.0,2026-07,True
+tampines east mrt station,dt33,dt,1,open,1.356389,103.954722,tampines east,tampines,east region,False,572098.0,527705.0,1099803.0,906421.0,193382.0,283011.0,240128.0,7.0,2026-07,True
+tampines mrt station,dt32;ew2,dt;ew,2,open,1.355,103.943889,tampines east,tampines,east region,True,1662100.0,1706880.0,3368980.0,2626056.0,742924.0,594650.0,789502.0,18.0,2026-07,True
+tampines north mrt station,cr6,cr,1,open,1.369167,103.937778,tampines north,tampines,east region,False,,,,,,,,,,False
+tampines west mrt station,dt31,dt,1,open,1.345556,103.938333,tampines west,tampines,east region,False,287926.0,295379.0,583305.0,479591.0,103714.0,143626.0,132464.0,8.0,2026-07,True
+tan kah kee mrt station,dt8,dt,1,open,1.326111,103.807222,coronation road,bukit timah,central region,False,167983.0,162334.0,330317.0,282997.0,47320.0,86489.0,68704.0,7.0,2026-07,True
+tanah merah mrt station,cg;ew4,cg;ew,2,open,1.327358,103.946344,bedok north,bedok,east region,True,512678.0,471097.0,983775.0,778560.0,205215.0,216185.0,213561.0,18.0,2026-07,True
+tanjong katong mrt station,te25,te,1,open,1.299167,103.8975,mountbatten,marine parade,central region,False,89029.0,91526.0,180555.0,138960.0,41595.0,33393.0,38870.0,18.0,2026-07,True
+tanjong pagar mrt station,ew15,ew,1,open,1.276439,103.845711,tanjong pagar,downtown core,central region,False,1110635.0,1143194.0,2253829.0,1975834.0,277995.0,560564.0,630773.0,18.0,2026-07,True
+tanjong rhu mrt station,te23,te,1,open,1.297222,103.873333,tanjong rhu,kallang,central region,False,108425.0,105386.0,213811.0,137139.0,76672.0,29734.0,39555.0,18.0,2026-07,True
+tavistock mrt station,cr10,cr,1,open,1.37,103.863333,serangoon garden,serangoon,north-east region,False,,,,,,,,,,False
+tawas mrt station,jw2,jw,1,open,1.350556,103.691944,cleantech,western water catchment,west region,False,,,,,,,,,,False
+teck ghee mrt station,cr12,cr,1,open,1.365556,103.843611,townsville,ang mo kio,north-east region,False,,,,,,,,,,False
+telok ayer mrt station,dt18,dt,1,open,1.282222,103.848333,chinatown,outram,central region,False,456518.0,486939.0,943457.0,859261.0,84196.0,253273.0,268722.0,18.0,2026-07,True
+telok blangah mrt station,cc28,cc,1,open,1.270556,103.809722,maritime square,bukit merah,central region,False,130675.0,138455.0,269130.0,213573.0,55557.0,62933.0,56500.0,8.0,2026-07,True
+tengah mrt station,js3,js,1,open,1.366389,103.73,park,tengah,west region,False,,,,,,,,,,False
+tengah park mrt station,je2,je,1,open,1.352222,103.736667,plantation,tengah,west region,False,,,,,,,,,,False
+tengah plantation mrt station,je1,je,1,open,1.357222,103.733333,plantation,tengah,west region,False,,,,,,,,,,False
+tiong bahru mrt station,ew17,ew,1,open,1.286081,103.826958,tiong bahru station,bukit merah,central region,False,736476.0,777699.0,1514175.0,1196087.0,318088.0,280978.0,333391.0,18.0,2026-07,True
+toa payoh mrt station,ns19,ns,1,open,1.332778,103.8475,toa payoh central,toa payoh,central region,False,1103044.0,1149057.0,2252101.0,1764187.0,487914.0,421977.0,477447.0,18.0,2026-07,True
+toh guan mrt station,je4,je,1,open,1.339722,103.7425,toh guan,jurong east,west region,False,,,,,,,,,,False
+tuas crescent mrt station,ew31,ew,1,open,1.321139,103.649,tuas north,tuas,west region,False,162045.0,143687.0,305732.0,248482.0,57250.0,82554.0,85680.0,7.0,2026-07,True
+tuas link mrt station,ew33,ew,1,open,1.340278,103.636806,tuas promenade,tuas,west region,False,198157.0,170562.0,368719.0,288836.0,79883.0,79699.0,87461.0,7.0,2026-07,True
+tuas west road mrt station,ew32,ew,1,open,1.330056,103.639611,tuas north,tuas,west region,False,191562.0,181218.0,372780.0,290526.0,82254.0,90881.0,100345.0,7.0,2026-07,True
+tukang mrt station,js10,js,1,open,1.325278,103.709167,tukang,boon lay,west region,False,,,,,,,,,,False
+turf city mrt station,cr14,cr,1,open,1.340833,103.794444,swiss club,bukit timah,central region,False,,,,,,,,,,False
+ubi mrt station,dt27,dt,1,open,1.33,103.9,kampong ubi,geylang,central region,False,309593.0,309448.0,619041.0,509544.0,109497.0,151473.0,154080.0,18.0,2026-07,True
+upper changi mrt station,dt34,dt,1,open,1.341944,103.961389,simei,tampines,east region,False,174532.0,157027.0,331559.0,278515.0,53044.0,78520.0,80254.0,8.0,2026-07,True
+upper thomson mrt station,te8,te,1,open,1.354167,103.833333,upper thomson,bishan,central region,False,322063.0,311415.0,633478.0,475356.0,158122.0,95242.0,144688.0,18.0,2026-07,True
+west coast mrt station,cr18,cr,1,open,1.310833,103.757778,clementi west,clementi,west region,False,,,,,,,,,,False
+woodlands mrt station,ns9;te2,ns;te,2,open,1.437094,103.786483,woodlands regional centre,woodlands,north region,True,1713571.0,2054656.0,3768227.0,2943993.0,824234.0,650805.0,833917.0,18.0,2026-07,True
+woodlands north mrt station,rts;te1,rts;te,2,open,1.448333,103.785,greenwood park,woodlands,north region,True,313788.0,261896.0,575684.0,510610.0,65074.0,156830.0,122029.0,8.0,2026-07,True
+woodlands south mrt station,te3,te,1,open,1.427222,103.793889,woodlands south,woodlands,north region,False,402335.0,373959.0,776294.0,637179.0,139115.0,176196.0,164702.0,7.0,2026-07,True
+woodleigh mrt station,ne11,ne,1,open,1.339167,103.870833,bidadari,toa payoh,central region,False,467808.0,480973.0,948781.0,741200.0,207581.0,167851.0,211816.0,18.0,2026-07,True
+xilin mrt station,dt36,dt,1,open,1.328889,103.965,xilin,tampines,east region,False,,,,,,,,,,False
+yew tee mrt station,ns5,ns,1,open,1.3975,103.7475,yew tee,choa chu kang,west region,False,919637.0,886547.0,1806184.0,1434612.0,371572.0,376052.0,383765.0,7.0,2026-07,True
+yio chu kang mrt station,ns15,ns,1,open,1.381906,103.844817,yio chu kang,ang mo kio,north-east region,False,687769.0,640383.0,1328152.0,1157293.0,170859.0,346223.0,308066.0,8.0,2026-07,True
+yishun mrt station,ns13,ns,1,open,1.429464,103.835239,yishun west,yishun,north region,False,1567791.0,1701035.0,3268826.0,2555722.0,713104.0,585092.0,723423.0,18.0,2026-07,True
