@@ -1,0 +1,225 @@
+src_station,dst_station,distance_km,method
+admiralty mrt station,sembawang mrt station,2.38,osm
+admiralty mrt station,woodlands mrt station,1.674,osm
+aljunied mrt station,kallang mrt station,1.404,osm
+aljunied mrt station,paya lebar mrt station,1.094,osm
+ang mo kio mrt station,bishan mrt station,2.336,osm
+ang mo kio mrt station,tavistock mrt station,1.852,haversine_fallback
+ang mo kio mrt station,teck ghee mrt station,0.98,haversine_fallback
+ang mo kio mrt station,yio chu kang mrt station,1.465,osm
+aviation park mrt station,changi terminal 5 mrt station,6.231,haversine_fallback
+aviation park mrt station,loyang mrt station,4.158,haversine_fallback
+bahar junction mrt station,boon lay mrt station,1.009,haversine_fallback
+bahar junction mrt station,jurong west mrt station,0.726,osm
+bartley mrt station,serangoon mrt station,1.103,osm
+bartley mrt station,tai seng mrt station,1.194,osm
+bayfront mrt station,downtown mrt station,4.977,osm
+bayfront mrt station,marina bay mrt station,0.96,osm
+bayfront mrt station,promenade mrt station,1.162,osm
+bayshore mrt station,bedok south mrt station,0.681,haversine_fallback
+bayshore mrt station,siglap mrt station,1.743,osm
+beauty world mrt station,hume mrt station,1.738,osm
+beauty world mrt station,king albert park mrt station,1.083,osm
+bedok mrt station,kembangan mrt station,1.903,osm
+bedok mrt station,tanah merah mrt station,1.862,osm
+bedok north mrt station,bedok reservoir mrt station,1.839,osm
+bedok north mrt station,kaki bukit mrt station,0.987,osm
+bedok reservoir mrt station,tampines west mrt station,1.598,osm
+bedok south mrt station,sungei bedok mrt station,1.246,haversine_fallback
+bencoolen mrt station,fort canning mrt station,0.975,osm
+bencoolen mrt station,jalan besar mrt station,0.929,osm
+bendemeer mrt station,geylang bahru mrt station,1.287,osm
+bendemeer mrt station,jalan besar mrt station,1.289,osm
+bishan mrt station,braddell mrt station,1.218,osm
+bishan mrt station,lorong chuan mrt station,1.8,osm
+bishan mrt station,marymount mrt station,1.297,osm
+boon keng mrt station,farrer park mrt station,1.161,osm
+boon keng mrt station,potong pasir mrt station,1.567,osm
+boon lay mrt station,enterprise mrt station,0.862,haversine_fallback
+boon lay mrt station,lakeside mrt station,1.828,osm
+boon lay mrt station,pioneer mrt station,0.976,osm
+botanic gardens mrt station,bukit brown mrt station,2.414,osm
+botanic gardens mrt station,farrer road mrt station,1.111,osm
+botanic gardens mrt station,stevens mrt station,1.251,osm
+botanic gardens mrt station,tan kah kee mrt station,0.993,osm
+braddell mrt station,toa payoh mrt station,0.882,osm
+bras basah mrt station,dhoby ghaut mrt station,0.813,haversine_fallback
+bras basah mrt station,esplanade mrt station,0.823,haversine_fallback
+brickland mrt station,bukit gombak mrt station,1.193,osm
+brickland mrt station,choa chu kang mrt/lrt station,2.072,osm
+bright hill mrt station,mayflower mrt station,0.981,osm
+bright hill mrt station,teck ghee mrt station,1.206,haversine_fallback
+bright hill mrt station,turf city mrt station,6.191,haversine_fallback
+bright hill mrt station,upper thomson mrt station,1.646,osm
+buangkok mrt station,hougang mrt station,1.271,osm
+buangkok mrt station,sengkang mrt/lrt station,1.034,osm
+bugis mrt station,city hall mrt station,0.962,osm
+bugis mrt station,lavender mrt station,1.091,osm
+bugis mrt station,promenade mrt station,1.082,osm
+bugis mrt station,rochor mrt station,0.568,osm
+bukit batok mrt station,bukit gombak mrt station,1.126,osm
+bukit batok mrt station,jurong east mrt station,2.122,osm
+bukit batok west mrt station,tengah park mrt station,0.978,haversine_fallback
+bukit batok west mrt station,toh guan mrt station,0.862,haversine_fallback
+bukit brown mrt station,caldecott mrt station,1.42,osm
+bukit panjang mrt/lrt station,cashew mrt station,1.218,osm
+bukit panjang mrt/lrt station,choa chu kang mrt/lrt station,2.451,haversine_fallback
+buona vista mrt station,commonwealth mrt station,1.08,osm
+buona vista mrt station,dover mrt station,1.365,osm
+buona vista mrt station,holland village mrt station,0.825,osm
+buona vista mrt station,one-north mrt station,0.943,osm
+caldecott mrt station,marymount mrt station,1.269,osm
+caldecott mrt station,mount pleasant mrt station,1.352,osm
+caldecott mrt station,upper thomson mrt station,2.048,osm
+canberra mrt station,sembawang mrt station,1.396,osm
+canberra mrt station,yishun mrt station,1.653,osm
+cantonment mrt station,keppel mrt station,0.756,osm
+cantonment mrt station,prince edward road mrt station,1.188,osm
+cashew mrt station,hillview mrt station,0.816,osm
+changi airport mrt station,expo mrt station,4.603,haversine_fallback
+changi terminal 5 mrt station,sungei bedok mrt station,4.812,haversine_fallback
+chinatown mrt station,clarke quay mrt station,0.514,osm
+chinatown mrt station,fort canning mrt station,0.952,osm
+chinatown mrt station,outram park mrt station,0.66,osm
+chinatown mrt station,telok ayer mrt station,0.583,osm
+chinese garden mrt station,jurong east mrt station,1.509,osm
+chinese garden mrt station,lakeside mrt station,1.32,osm
+choa chu kang mrt/lrt station,choa chu kang west mrt station,0.95,osm
+choa chu kang mrt/lrt station,yew tee mrt station,1.48,osm
+choa chu kang west mrt station,tengah mrt station,1.81,osm
+city hall mrt station,dhoby ghaut mrt station,1.073,osm
+city hall mrt station,raffles place mrt station,1.129,osm
+clarke quay mrt station,dhoby ghaut mrt station,1.296,osm
+clementi mrt station,dover mrt station,1.721,osm
+clementi mrt station,jurong east mrt station,3.502,osm
+clementi mrt station,maju mrt station,2.336,haversine_fallback
+clementi mrt station,west coast mrt station,1.161,haversine_fallback
+commonwealth mrt station,queenstown mrt station,1.279,osm
+corporation mrt station,hong kah mrt station,1.496,osm
+corporation mrt station,jurong west mrt station,0.754,osm
+dakota mrt station,mountbatten mrt station,0.719,osm
+dakota mrt station,paya lebar mrt station,1.274,osm
+de1 mrt station,sungei kadut mrt station,1.879,haversine_fallback
+defu mrt station,hougang mrt station,1.512,haversine_fallback
+defu mrt station,tampines north mrt station,5.27,haversine_fallback
+dhoby ghaut mrt station,little india mrt station,0.965,osm
+dhoby ghaut mrt station,somerset mrt station,0.671,osm
+downtown mrt station,telok ayer mrt station,0.61,osm
+elias mrt station,pasir ris mrt station,2.15,haversine_fallback
+elias mrt station,riviera mrt/lrt station,3.249,haversine_fallback
+enterprise mrt station,tukang mrt station,1.003,haversine_fallback
+esplanade mrt station,promenade mrt station,0.713,haversine_fallback
+eunos mrt station,kembangan mrt station,1.161,osm
+eunos mrt station,paya lebar mrt station,1.193,osm
+expo mrt station,tanah merah mrt station,2.334,haversine_fallback
+expo mrt station,upper changi mrt station,0.784,osm
+expo mrt station,xilin mrt station,0.945,haversine_fallback
+farrer park mrt station,little india mrt station,0.796,osm
+farrer road mrt station,holland village mrt station,1.44,osm
+founders' memorial mrt station,gardens by the bay mrt station,1.513,osm
+founders' memorial mrt station,tanjong rhu mrt station,1.246,osm
+gardens by the bay mrt station,marina south mrt station,0.737,osm
+gek poh mrt station,tawas mrt station,0.738,osm
+geylang bahru mrt station,mattar mrt station,1.516,osm
+great world mrt station,havelock mrt station,0.813,osm
+great world mrt station,orchard mrt station,0.999,osm
+gul circle mrt station,joo koon mrt station,1.916,haversine_fallback
+gul circle mrt station,jurong pier mrt station,6.045,haversine_fallback
+gul circle mrt station,tuas crescent mrt station,2.228,haversine_fallback
+harbourfront mrt station,keppel mrt station,1.148,osm
+harbourfront mrt station,outram park mrt station,2.647,osm
+harbourfront mrt station,telok blangah mrt station,1.556,osm
+havelock mrt station,outram park mrt station,1.134,osm
+haw par villa mrt station,kent ridge mrt station,1.319,osm
+haw par villa mrt station,pasir panjang mrt station,1.353,osm
+hillview mrt station,hume mrt station,0.95,osm
+hong kah mrt station,tengah mrt station,1.06,osm
+hougang mrt station,kovan mrt station,1.553,osm
+hougang mrt station,serangoon north mrt station,2.485,haversine_fallback
+joo koon mrt station,pioneer mrt station,2.603,osm
+jurong east mrt station,jurong town hall mrt station,1.094,haversine_fallback
+jurong east mrt station,toh guan mrt station,0.853,haversine_fallback
+jurong hill mrt station,jurong pier mrt station,0.741,haversine_fallback
+jurong hill mrt station,tukang mrt station,0.902,haversine_fallback
+jurong lake district mrt station,jurong pier mrt station,4.292,haversine_fallback
+jurong lake district mrt station,west coast mrt station,3.308,haversine_fallback
+jurong town hall mrt station,pandan reservoir mrt station,0.829,haversine_fallback
+kaki bukit mrt station,ubi mrt station,1.159,osm
+kallang mrt station,lavender mrt station,1.078,osm
+katong park mrt station,tanjong katong mrt station,1.408,osm
+katong park mrt station,tanjong rhu mrt station,1.346,osm
+kent ridge mrt station,one-north mrt station,0.748,osm
+khatib mrt station,yio chu kang mrt station,4.869,osm
+khatib mrt station,yishun mrt station,1.414,osm
+king albert park mrt station,maju mrt station,1.339,haversine_fallback
+king albert park mrt station,sixth avenue mrt station,1.641,osm
+king albert park mrt station,turf city mrt station,1.592,haversine_fallback
+kovan mrt station,serangoon mrt station,1.776,osm
+kranji mrt station,marsiling mrt station,1.708,osm
+kranji mrt station,sungei kadut mrt station,2.321,osm
+labrador park mrt station,pasir panjang mrt station,1.336,osm
+labrador park mrt station,telok blangah mrt station,0.81,osm
+lentor mrt station,mayflower mrt station,1.568,osm
+lentor mrt station,springleaf mrt station,2.567,osm
+little india mrt station,newton mrt station,1.464,osm
+little india mrt station,rochor mrt station,0.449,osm
+lorong chuan mrt station,serangoon mrt station,1.203,osm
+loyang mrt station,pasir ris east mrt station,1.641,haversine_fallback
+macpherson mrt station,mattar mrt station,0.853,osm
+macpherson mrt station,paya lebar mrt station,1.021,osm
+macpherson mrt station,tai seng mrt station,1.058,osm
+macpherson mrt station,ubi mrt station,1.168,osm
+marina bay mrt station,marina south mrt station,1.056,osm
+marina bay mrt station,marina south pier mrt station,1.207,osm
+marina bay mrt station,prince edward road mrt station,0.918,osm
+marina bay mrt station,raffles place mrt station,1.039,osm
+marina bay mrt station,shenton way mrt station,0.498,osm
+marine parade mrt station,marine terrace mrt station,1.225,osm
+marine parade mrt station,tanjong katong mrt station,0.925,osm
+marine terrace mrt station,siglap mrt station,1.584,osm
+marsiling mrt station,woodlands mrt station,1.509,osm
+maxwell mrt station,outram park mrt station,0.419,osm
+maxwell mrt station,shenton way mrt station,0.888,osm
+mount pleasant mrt station,stevens mrt station,1.637,osm
+mountbatten mrt station,stadium mrt station,0.897,osm
+nanyang crescent mrt station,nanyang gateway mrt station,0.946,osm
+nanyang crescent mrt station,peng kang hill mrt station,0.761,osm
+nanyang gateway mrt station,tawas mrt station,0.972,osm
+napier mrt station,orchard boulevard mrt station,0.873,osm
+napier mrt station,stevens mrt station,1.746,osm
+newton mrt station,novena mrt station,1.051,osm
+newton mrt station,orchard mrt station,1.38,osm
+newton mrt station,stevens mrt station,1.643,osm
+nicoll highway mrt station,promenade mrt station,0.979,osm
+nicoll highway mrt station,stadium mrt station,1.348,osm
+novena mrt station,toa payoh mrt station,1.503,osm
+orchard boulevard mrt station,orchard mrt station,0.972,osm
+orchard mrt station,somerset mrt station,0.925,osm
+outram park mrt station,tanjong pagar mrt station,0.859,osm
+outram park mrt station,tiong bahru mrt station,1.664,osm
+pasir ris east mrt station,pasir ris mrt station,1.778,haversine_fallback
+pasir ris mrt station,tampines mrt station,2.073,osm
+pasir ris mrt station,tampines north mrt station,1.606,haversine_fallback
+potong pasir mrt station,woodleigh mrt station,0.914,osm
+punggol coast mrt station,punggol mrt/lrt station,1.635,osm
+punggol mrt/lrt station,riviera mrt/lrt station,2.321,haversine_fallback
+punggol mrt/lrt station,sengkang mrt/lrt station,1.704,osm
+queenstown mrt station,redhill mrt station,1.338,osm
+raffles place mrt station,tanjong pagar mrt station,1.096,osm
+redhill mrt station,tiong bahru mrt station,1.237,osm
+serangoon mrt station,woodleigh mrt station,1.218,osm
+serangoon north mrt station,tavistock mrt station,1.373,haversine_fallback
+simei mrt station,tampines mrt station,1.65,osm
+simei mrt station,tanah merah mrt station,2.534,osm
+sixth avenue mrt station,tan kah kee mrt station,1.233,osm
+springleaf mrt station,woodlands south mrt station,4.468,osm
+sungei bedok mrt station,xilin mrt station,1.573,haversine_fallback
+sungei kadut mrt station,yew tee mrt station,1.801,osm
+tampines east mrt station,tampines mrt station,1.326,osm
+tampines east mrt station,upper changi mrt station,2.622,osm
+tampines mrt station,tampines west mrt station,1.356,osm
+tengah park mrt station,tengah plantation mrt station,0.802,haversine_fallback
+tuas crescent mrt station,tuas west road mrt station,1.44,osm
+tuas link mrt station,tuas west road mrt station,1.359,osm
+woodlands mrt station,woodlands north mrt station,1.364,osm
+woodlands mrt station,woodlands south mrt station,1.507,osm
