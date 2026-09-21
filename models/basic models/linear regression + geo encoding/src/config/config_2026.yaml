@@ -1,0 +1,141 @@
+# Postal-code geocoding configuration for Singapore HDB rental records.
+
+feature_engineering:
+  postcode_transform:
+    enabled: true
+    postcode_col: POSTAL_CODE
+
+    # Created columns
+    sector_col: POSTAL_SECTOR
+    district_col: POSTAL_DISTRICT
+    region_col: POSTAL_REGION
+
+    # Treat "00" as invalid sector (legacy/invalid postcodes exist)
+    invalid_sector_prefixes: ["00"]
+
+    # how regions work:
+    # Core Central Region (CCR): The prime downtown core and luxury central districts (mainly Districts 1, 2, 6, 9, 10, and 11).
+    # Rest of Central Region (RCR): The mid-tier "urban fringe" areas just outside the primary center (such as Districts 3, 4, 5, 7, 8, 12, 13, 14, 15, and 20).
+    # Outside Central Region (OCR): The suburban residential areas spanning the rest of the island (including suburban districts like Bedok, Tampines, Hougang, and Jurong).
+    # the .5 is meant to denote the in-between, because some districts lie on the boundaries of the regions
+    regions:
+      1:
+        districts: ["09", "10", "11"]
+      1.5:
+        districts: ["01", "02", "04", "06", "07"]
+      2:
+        districts: ["03", "08", "12", "13"]
+      2.5:
+        districts: ["05", "14", "15", "20"]
+      3:
+        districts: ["16", "17", "18", "19", "21", "22", "23", "24", "25", "26", "27", "28"]
+
+    postal_districts:
+      "01":
+        postal_sector: ["01", "02", "03", "04", "05", "06"]
+        general_location: ["Raffles Place", "Cecil", "Marina", "People's Park"]
+      "02":
+        postal_sector: ["07", "08"]
+        general_location: ["Anson", "Tanjong Pagar"]
+      "03":
+        postal_sector: ["14", "15", "16"]
+        general_location: ["Queenstown", "Tiong Bahru"]
+      "04":
+        postal_sector: ["09", "10"]
+        general_location: ["Telok Blangah", "Harbourfront"]
+      "05":
+        postal_sector: ["11", "12", "13"]
+        general_location: ["Pasir Panjang", "Hong Leong Garden", "Clementi New Town"]
+      "06":
+        postal_sector: ["17"]
+        general_location: ["High Street", "Beach Road (part)"]
+      "07":
+        postal_sector: ["18", "19"]
+        general_location: ["Middle Road", "Golden Mile"]
+      "08":
+        postal_sector: ["20", "21"]
+        general_location: ["Little India"]
+      "09":
+        postal_sector: ["22", "23"]
+        general_location: ["Orchard", "Cairnhill", "River Valley"]
+      "10":
+        postal_sector: ["24", "25", "26", "27"]
+        general_location: ["Ardmore", "Bukit Timah", "Holland Road", "Tanglin"]
+      "11":
+        postal_sector: ["28", "29", "30"]
+        general_location: ["Watten Estate", "Novena", "Thomson"]
+      "12":
+        postal_sector: ["31", "32", "33"]
+        general_location: ["Balestier", "Toa Payoh", "Serangoon"]
+      "13":
+        postal_sector: ["34", "35", "36", "37"]
+        general_location: ["Macpherson", "Braddell"]
+      "14":
+        postal_sector: ["38", "39", "40", "41"]
+        general_location: ["Geylang", "Eunos"]
+      "15":
+        postal_sector: ["42", "43", "44", "45"]
+        general_location: ["Katong", "Joo Chiat", "Amber Road"]
+      "16":
+        postal_sector: ["46", "47", "48"]
+        general_location: ["Bedok", "Upper East Coast", "Eastwood", "Kew Drive"]
+      "17":
+        postal_sector: ["49", "50", "81"]
+        general_location: ["Loyang", "Changi"]
+      "18":
+        postal_sector: ["51", "52"]
+        general_location: ["Tampines", "Pasir Ris"]
+      "19":
+        postal_sector: ["53", "54", "55", "82"]
+        general_location: ["Serangoon Garden", "Hougang", "Punggol"]
+      "20":
+        postal_sector: ["56", "57"]
+        general_location: ["Bishan", "Ang Mo Kio"]
+      "21":
+        postal_sector: ["58", "59"]
+        general_location: ["Upper Bukit Timah", "Clementi Park", "Ulu Pandan"]
+      "22":
+        postal_sector: ["60", "61", "62", "63", "64"]
+        general_location: ["Jurong"]
+      "23":
+        postal_sector: ["65", "66", "67", "68"]
+        general_location: ["Hillview", "Dairy Farm", "Bukit Panjang", "Choa Chu Kang"]
+      "24":
+        postal_sector: ["69", "70", "71"]
+        general_location: ["Lim Chu Kang", "Tengah"]
+      "25":
+        postal_sector: ["72", "73"]
+        general_location: ["Kranji", "Woodgrove"]
+      "26":
+        postal_sector: ["77", "78"]
+        general_location: ["Upper Thomson", "Springleaf"]
+      "27":
+        postal_sector: ["75", "76"]
+        general_location: ["Yishun", "Sembawang"]
+      "28":
+        postal_sector: ["79", "80"]
+        general_location: ["Seletar"]
+
+  floor:
+    enabled: true                 # controls only band/is_* + cap outputs
+    sty_col: MAX_FLOOR
+    floor_num_col: FLOOR_NUM
+    floor_band_col: FLOOR_BAND
+    is_high_floor_col: IS_HIGH_FLOOR
+    is_basement_col: IS_BASEMENT
+
+    basement_strategy: to_zero      # to_zero | to_ground | keep | flag
+    missing_impute_value: 1
+    high_floor_threshold: 11
+
+    cap_enabled: true
+    cap_value: 40
+
+    # IMPORTANT: includes band for 0 (so STY<0 -> 0 is categorical-clean)
+    bands:
+      - { name: B0_OR_BASEMENT, min: 0,  max: 0 }
+      - { name: LOW,            min: 1,  max: 4 }
+      - { name: MID,            min: 5,  max: 10 }
+      - { name: HIGH,           min: 11, max: 20 }
+      - { name: VERY_HIGH,      min: 21, max: 40 }
+      - { name: SKY,            min: 41, max: null }
