@@ -3,7 +3,7 @@
     "overall_status": "REVIEW REQUIRED",
     "train_rows": 150000,
     "test_rows": 50000,
-    "predictor_count": 121,
+    "predictor_count": 127,
     "train_date_range": "2021-01-01 to 2025-03-01",
     "test_date_range": "2025-03-01 to 2026-07-01",
     "missing_columns_train": 42,
@@ -1422,119 +1422,119 @@
   ],
   "source_profiles": [
     {
-      "source": "data/train.csv",
+      "source": "train.csv",
       "rows": 150000,
       "columns": 11,
       "fully_duplicate_rows": 425,
       "columns_with_missing": 0
     },
     {
-      "source": "data/test.csv",
+      "source": "test.csv",
       "rows": 50000,
       "columns": 10,
       "fully_duplicate_rows": 5508,
       "columns_with_missing": 0
     },
     {
-      "source": "data/auxiliary/sg-hdb-block.csv",
+      "source": "auxiliary/sg-hdb-block.csv",
       "rows": 9464,
       "columns": 11,
       "fully_duplicate_rows": 0,
       "columns_with_missing": 0
     },
     {
-      "source": "data/collected_data/mrt_data/sg-mrt-nodes-features-202605.csv",
+      "source": "collected_data/mrt_data/sg-mrt-nodes-features-202605.csv",
       "rows": 192,
       "columns": 21,
       "fully_duplicate_rows": 0,
       "columns_with_missing": 9
     },
     {
-      "source": "data/collected_data/mrt_data/sg-mrt-nodes-features-202606.csv",
+      "source": "collected_data/mrt_data/sg-mrt-nodes-features-202606.csv",
       "rows": 192,
       "columns": 21,
       "fully_duplicate_rows": 0,
       "columns_with_missing": 9
     },
     {
-      "source": "data/collected_data/mrt_data/sg-mrt-nodes-features-202607.csv",
+      "source": "collected_data/mrt_data/sg-mrt-nodes-features-202607.csv",
       "rows": 192,
       "columns": 21,
       "fully_duplicate_rows": 0,
       "columns_with_missing": 9
     },
     {
-      "source": "data/collected_data/mrt_data/sg-mrt-edges-weighted.csv",
+      "source": "collected_data/mrt_data/sg-mrt-edges-weighted.csv",
       "rows": 224,
       "columns": 4,
       "fully_duplicate_rows": 0,
       "columns_with_missing": 0
     },
     {
-      "source": "data/auxiliary/sg-shopping-malls.csv",
+      "source": "auxiliary/sg-shopping-malls.csv",
       "rows": 113,
       "columns": 3,
       "fully_duplicate_rows": 0,
       "columns_with_missing": 0
     },
     {
-      "source": "data/collected_data/mall_features/sg-mall-features-wikipedia.csv",
+      "source": "collected_data/mall_features/sg-mall-features-wikipedia.csv",
       "rows": 113,
       "columns": 11,
       "fully_duplicate_rows": 0,
       "columns_with_missing": 8
     },
     {
-      "source": "data/collected_data/school_data/sg-schools-primary.csv",
+      "source": "collected_data/school_data/sg-schools-primary.csv",
       "rows": 179,
       "columns": 13,
       "fully_duplicate_rows": 0,
       "columns_with_missing": 1
     },
     {
-      "source": "data/collected_data/school_data/sg-schools-secondary.csv",
+      "source": "collected_data/school_data/sg-schools-secondary.csv",
       "rows": 133,
       "columns": 19,
       "fully_duplicate_rows": 0,
       "columns_with_missing": 6
     },
     {
-      "source": "data/collected_data/school_data/sg-schools-junior_college.csv",
+      "source": "collected_data/school_data/sg-schools-junior_college.csv",
       "rows": 11,
       "columns": 22,
       "fully_duplicate_rows": 0,
       "columns_with_missing": 3
     },
     {
-      "source": "data/collected_data/school_data/sg-schools-mixed.csv",
+      "source": "collected_data/school_data/sg-schools-mixed.csv",
       "rows": 14,
       "columns": 24,
       "fully_duplicate_rows": 0,
       "columns_with_missing": 11
     },
     {
-      "source": "data/collected_data/zoning_data/sg-demographics-planning-area.csv",
+      "source": "collected_data/zoning_data/sg-demographics-planning-area.csv",
       "rows": 47,
       "columns": 20,
       "fully_duplicate_rows": 0,
       "columns_with_missing": 16
     },
     {
-      "source": "data/collected_data/zoning_data/sg-demographics-subzone.csv",
+      "source": "collected_data/zoning_data/sg-demographics-subzone.csv",
       "rows": 224,
       "columns": 9,
       "fully_duplicate_rows": 0,
       "columns_with_missing": 4
     },
     {
-      "source": "data/sg-coe-prices.csv",
+      "source": "auxiliary/sg-coe-prices.csv",
       "rows": 539,
       "columns": 8,
       "fully_duplicate_rows": 0,
       "columns_with_missing": 0
     },
     {
-      "source": "data/sg-stock-prices.csv",
+      "source": "auxiliary/sg-stock-prices.csv",
       "rows": 91642,
       "columns": 9,
       "fully_duplicate_rows": 0,

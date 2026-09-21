@@ -7,6 +7,13 @@ tracks every data-collection task considered, the sources for each, and status.
 
 _Last updated: 2026-09-02._
 
+> Storage note (2026-09-21): the collection utilities are version-controlled in
+> `src/data_collection/`; their datasets and response caches are stored in the
+> external `CS5228 Project Data/data/collected_data/` bundle. Some of these
+> legacy utilities still show their original `toy_data` paths, so review their
+> input and output arguments before rerunning them. The main feature pipeline
+> uses `CS5228_DATA_ROOT` as documented in `docs/DATA_STORAGE.md`.
+
 ---
 
 ## 0. Graph construction (foundation — no external data)

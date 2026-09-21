@@ -11,11 +11,13 @@ import pandas as pd
 
 
 PROJECT = Path(__file__).resolve().parents[1]
-DATA = PROJECT / "data"
 OUTPUT_JSON = PROJECT / "reports" / "final_dataset_audit.json"
 
 sys.path.insert(0, str(PROJECT))
 from src import build_features as bf  # noqa: E402
+from src.data_paths import resolve_data_root  # noqa: E402
+
+DATA = resolve_data_root(PROJECT)
 
 
 def pct(numerator: int | float, denominator: int | float) -> float:
@@ -655,26 +657,26 @@ temporal_risks = [
 
 source_profiles = []
 source_paths = [
-    "data/train.csv",
-    "data/test.csv",
-    "data/auxiliary/sg-hdb-block.csv",
-    "data/collected_data/mrt_data/sg-mrt-nodes-features-202605.csv",
-    "data/collected_data/mrt_data/sg-mrt-nodes-features-202606.csv",
-    "data/collected_data/mrt_data/sg-mrt-nodes-features-202607.csv",
-    "data/collected_data/mrt_data/sg-mrt-edges-weighted.csv",
-    "data/auxiliary/sg-shopping-malls.csv",
-    "data/collected_data/mall_features/sg-mall-features-wikipedia.csv",
-    "data/collected_data/school_data/sg-schools-primary.csv",
-    "data/collected_data/school_data/sg-schools-secondary.csv",
-    "data/collected_data/school_data/sg-schools-junior_college.csv",
-    "data/collected_data/school_data/sg-schools-mixed.csv",
-    "data/collected_data/zoning_data/sg-demographics-planning-area.csv",
-    "data/collected_data/zoning_data/sg-demographics-subzone.csv",
-    "data/sg-coe-prices.csv",
-    "data/sg-stock-prices.csv",
+    "train.csv",
+    "test.csv",
+    "auxiliary/sg-hdb-block.csv",
+    "collected_data/mrt_data/sg-mrt-nodes-features-202605.csv",
+    "collected_data/mrt_data/sg-mrt-nodes-features-202606.csv",
+    "collected_data/mrt_data/sg-mrt-nodes-features-202607.csv",
+    "collected_data/mrt_data/sg-mrt-edges-weighted.csv",
+    "auxiliary/sg-shopping-malls.csv",
+    "collected_data/mall_features/sg-mall-features-wikipedia.csv",
+    "collected_data/school_data/sg-schools-primary.csv",
+    "collected_data/school_data/sg-schools-secondary.csv",
+    "collected_data/school_data/sg-schools-junior_college.csv",
+    "collected_data/school_data/sg-schools-mixed.csv",
+    "collected_data/zoning_data/sg-demographics-planning-area.csv",
+    "collected_data/zoning_data/sg-demographics-subzone.csv",
+    "auxiliary/sg-coe-prices.csv",
+    "auxiliary/sg-stock-prices.csv",
 ]
 for relative in source_paths:
-    frame = pd.read_csv(PROJECT / relative)
+    frame = pd.read_csv(DATA / relative)
     source_profiles.append({
         "source": relative,
         "rows": int(len(frame)),

@@ -29,3 +29,12 @@ gh_*_windows_amd64.zip
 
 # Regenerable data-collection caches
 **/_*_cache/
+
+# Project data is stored in the external Google Drive bundle.
+data/**
+!data/
+!data/README.md
+
+# Graph-model data is stored under <data root>/location_graph.
+00_location_graph_data_mining/graph_feature_store/
+00_location_graph_data_mining/raw_graph_data/

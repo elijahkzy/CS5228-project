@@ -3,7 +3,7 @@
 Run from any directory:
     python src/build_features.py
 
-Outputs are written to data/processed beneath the project root.
+Inputs and outputs use the resolved external data root. See docs/DATA_STORAGE.md.
 """
 
 from __future__ import annotations
@@ -17,6 +17,8 @@ from pathlib import Path
 
 import numpy as np
 import pandas as pd
+
+from data_paths import resolve_data_root
 
 
 EARTH_RADIUS_KM = 6371.0088
@@ -345,7 +347,10 @@ def clean_demographics(path: Path, prefix: str, key: str) -> pd.DataFrame:
 
 
 def build_macro_features(data_dir: Path) -> pd.DataFrame:
-    coe = pd.read_csv(data_dir / "sg-coe-prices.csv")
+    auxiliary_dir = data_dir / "auxiliary"
+    coe_path = auxiliary_dir / "sg-coe-prices.csv" if auxiliary_dir.exists() else data_dir / "sg-coe-prices.csv"
+    stock_path = auxiliary_dir / "sg-stock-prices.csv" if auxiliary_dir.exists() else data_dir / "sg-stock-prices.csv"
+    coe = pd.read_csv(coe_path)
     month_lookup = {month.lower(): index for index, month in enumerate(
         ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"], 1
     )}
@@ -362,7 +367,7 @@ def build_macro_features(data_dir: Path) -> pd.DataFrame:
         COE_BID_QUOTA_RATIO=("BID_QUOTA_RATIO", "mean"),
     ).sort_index().shift(1).add_suffix("_LAG1")
 
-    stocks = pd.read_csv(data_dir / "sg-stock-prices.csv")
+    stocks = pd.read_csv(stock_path)
     stocks["DATE"] = pd.to_datetime(stocks["DATE"], errors="coerce")
     stocks["ADJUSTED_CLOSE"] = numeric(stocks["ADJUSTED_CLOSE"])
     stocks = stocks.sort_values(["SYMBOL", "DATE"])
@@ -373,6 +378,27 @@ def build_macro_features(data_dir: Path) -> pd.DataFrame:
         STOCK_MARKET_VOLATILITY=("DAILY_RETURN", "std"),
     ).sort_index().shift(1).add_suffix("_LAG1")
     return coe_monthly.join(stock_monthly, how="outer").reset_index()
+
+
+def load_official_macro_features(data_dir: Path) -> pd.DataFrame:
+    """Load the compact point-in-time macro panel produced by the downloader."""
+    path = data_dir / "macro" / "sg_macro_features_monthly.csv"
+    if not path.exists():
+        raise FileNotFoundError(
+            f"Missing {path}. Run 'python src/download_macro_data.py' first."
+        )
+    macro = pd.read_csv(path)
+    macro["RENT_APPROVAL_DATE"] = pd.to_datetime(
+        macro["RENT_APPROVAL_DATE"], errors="raise"
+    )
+    feature_columns = [column for column in macro if column.startswith("MACRO_")]
+    if not feature_columns:
+        raise ValueError("Official macro panel contains no MACRO_ feature columns")
+    if macro["RENT_APPROVAL_DATE"].duplicated().any():
+        raise ValueError("Official macro panel has duplicate rental months")
+    for column in feature_columns:
+        macro[column] = numeric(macro[column])
+    return macro[["RENT_APPROVAL_DATE", *feature_columns]]
 
 
 def historical_group_features(
@@ -442,6 +468,8 @@ def feature_description(column: str) -> tuple[str, str, str]:
         return "mall accessibility", "Mall proximity or Wikipedia-derived size feature", "Wikipedia attributes have incomplete coverage"
     if any(token in column for token in ["SCHOOL", "SECONDARY", "JUNIOR_COLLEGE", "JC_L1R5"]):
         return "school accessibility", "School proximity, count, fee tier, or entry-score feature", "Current school snapshot; entry-score meaning varies by level"
+    if column.startswith("MACRO_"):
+        return "official macroeconomic", "Point-in-time Singapore macro or housing-market indicator", "Uses a conservative publication delay; validate as a group with forward time splits"
     if column.startswith(("COE_", "STOCK_")):
         return "macroeconomic", "One-month-lagged monthly market indicator", "May proxy for time; validate incrementally"
     if column in {"LATITUDE", "LONGITUDE", "MAX_FLOOR", "YEAR_COMPLETED", "BUILDING_AGE", "SUBZONE", "PLANNING_AREA", "REGION"}:
@@ -467,8 +495,10 @@ def build_feature_dictionary(train_output: pd.DataFrame) -> pd.DataFrame:
     return pd.DataFrame(records)
 
 
-def build_tables(project_root: Path) -> tuple[pd.DataFrame, pd.DataFrame, dict]:
-    data_dir = project_root / "data"
+def build_tables(
+    project_root: Path, data_root: Path | None = None
+) -> tuple[pd.DataFrame, pd.DataFrame, dict]:
+    data_dir = resolve_data_root(project_root, data_root)
     auxiliary_dir = data_dir / "auxiliary"
     collected_dir = data_dir / "collected_data"
     hdb_path = auxiliary_dir / "sg-hdb-block.csv" if auxiliary_dir.exists() else data_dir / "sg-hdb-block.csv"
@@ -514,6 +544,12 @@ def build_tables(project_root: Path) -> tuple[pd.DataFrame, pd.DataFrame, dict]:
     combined["SZ_DEMOGRAPHICS_MATCHED"] = combined.filter(regex=r"^SZ_TOTAL_POPULATION$").notna().any(axis=1).astype("int8")
 
     combined = combined.merge(build_macro_features(data_dir), on="RENT_APPROVAL_DATE", how="left", validate="many_to_one")
+    combined = combined.merge(
+        load_official_macro_features(data_dir),
+        on="RENT_APPROVAL_DATE",
+        how="left",
+        validate="many_to_one",
+    )
 
     history_specs = [
         (["ADDRESS_KEY"], "ADDRESS"),
@@ -557,6 +593,17 @@ def build_tables(project_root: Path) -> tuple[pd.DataFrame, pd.DataFrame, dict]:
         "hdb_match_test_pct": float(100 * test_output["HDB_BLOCK_MATCHED"].mean()),
         "address_history_train_pct": float(100 * train_output["ADDRESS_PRIOR_MEDIAN"].notna().mean()),
         "address_history_test_pct": float(100 * test_output["ADDRESS_PRIOR_MEDIAN"].notna().mean()),
+        "official_macro_feature_count": len(
+            [column for column in predictor_columns if column.startswith("MACRO_")]
+        ),
+        "official_macro_complete_train_pct": float(
+            100
+            * train_output.filter(regex=r"^MACRO_").notna().all(axis=1).mean()
+        ),
+        "official_macro_complete_test_pct": float(
+            100
+            * test_output.filter(regex=r"^MACRO_").notna().all(axis=1).mean()
+        ),
         "columns_with_missing_train": int((train_output.isna().sum() > 0).sum()),
         "columns_with_missing_test": int((test_output.isna().sum() > 0).sum()),
         "missingness_train_pct": {
@@ -571,8 +618,8 @@ def build_tables(project_root: Path) -> tuple[pd.DataFrame, pd.DataFrame, dict]:
     return train_output, test_output, report
 
 
-def save_outputs(project_root: Path, train: pd.DataFrame, test: pd.DataFrame, report: dict) -> None:
-    output_dir = project_root / "data" / "processed"
+def save_outputs(data_root: Path, train: pd.DataFrame, test: pd.DataFrame, report: dict) -> None:
+    output_dir = data_root / "processed"
     output_dir.mkdir(parents=True, exist_ok=True)
     train.to_parquet(output_dir / "train_features.parquet", index=False)
     test.to_parquet(output_dir / "test_features.parquet", index=False)
@@ -584,12 +631,19 @@ def save_outputs(project_root: Path, train: pd.DataFrame, test: pd.DataFrame, re
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--project-root", type=Path, default=DEFAULT_PROJECT_ROOT)
+    parser.add_argument(
+        "--data-root",
+        type=Path,
+        help="Folder containing train.csv; overrides CS5228_DATA_ROOT and auto-detection",
+    )
     arguments = parser.parse_args()
     project_root = arguments.project_root.resolve()
-    train, test, report = build_tables(project_root)
-    save_outputs(project_root, train, test, report)
+    data_root = resolve_data_root(project_root, arguments.data_root)
+    train, test, report = build_tables(project_root, data_root)
+    save_outputs(data_root, train, test, report)
     print(json.dumps({key: value for key, value in report.items() if not key.startswith("missingness_")}, indent=2))
-    print(f"Outputs written to {project_root / 'data' / 'processed'}")
+    print(f"Data root: {data_root}")
+    print(f"Outputs written to {data_root / 'processed'}")
 
 
 if __name__ == "__main__":

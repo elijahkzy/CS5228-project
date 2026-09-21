@@ -4,8 +4,8 @@
 
 The feature pipeline converts the raw rental records and collected auxiliary sources into two aligned model-training tables:
 
-- `data/processed/train_features.parquet`: 150,000 rows, predictors, identifiers, and `MONTHLY_RENT`.
-- `data/processed/test_features.parquet`: 50,000 rows with the same predictors and identifiers, without the target.
+- `<data root>/processed/train_features.parquet`: 150,000 rows, predictors, identifiers, and `MONTHLY_RENT`.
+- `<data root>/processed/test_features.parquet`: 50,000 rows with the same predictors and identifiers, without the target.
 
 The pipeline preserves the original row order through `ROW_ID`. It does not combine training and test records into one modeling file because the target is available only for training and the Kaggle submission must retain test order.
 
@@ -14,19 +14,36 @@ The pipeline preserves the original row order through `ROW_ID`. It does not comb
 From the project root:
 
 ```powershell
+.\.venv\Scripts\python.exe .\src\download_macro_data.py
 .\.venv\Scripts\python.exe .\src\build_features.py
 ```
+
+These commands automatically detect the adjacent `CS5228 Project Data/data`
+folder. For a Google Drive copy in another location, set
+`CS5228_DATA_ROOT` or pass `--data-root`:
+
+```powershell
+.\.venv\Scripts\python.exe .\src\build_features.py `
+  --data-root "G:\My Drive\CS5228 Project Data\data"
+```
+
+The first command refreshes the selected official Singapore macroeconomic
+series and constructs their point-in-time monthly panel. See
+`docs/MACRO_FEATURES.md` for source provenance, availability assumptions, and
+fixed-origin forecasting guidance.
 
 The script can also be run from another directory:
 
 ```powershell
-python path\to\CS5228 Project\src\build_features.py --project-root "path\to\CS5228 Project"
+python path\to\CS5228 Project\src\build_features.py `
+  --project-root "path\to\CS5228 Project" `
+  --data-root "path\to\CS5228 Project Data\data"
 ```
 
 The build creates:
 
 ```text
-data/processed/
+<data root>/processed/
 ├── train_features.parquet
 ├── test_features.parquet
 ├── feature_dictionary.csv
@@ -37,7 +54,7 @@ data/processed/
 
 ## Processing sequence
 
-1. Read `data/train.csv` and `data/test.csv` without changing row order.
+1. Read `<data root>/train.csv` and `<data root>/test.csv` without changing row order.
 2. Normalize text case, whitespace, punctuation, street abbreviations, and flat-type labels.
 3. Parse monthly approval dates and numeric property fields.
 4. Remove `FURNISHED` and `FEE`, which are constant in the supplied release.
@@ -46,9 +63,11 @@ data/processed/
 7. Derive nearest-station, MRT-network, station-ridership, mall, and school features at block level.
 8. Join planning-area and subzone demographics.
 9. Aggregate COE and stock data to monthly one-period-lagged indicators.
-10. Calculate address, town-flat-type, and flat-type rent histories using strictly earlier months.
-11. Restore original train and test order and validate row counts and schema parity.
-12. Save typed Parquet tables, a feature dictionary, and a build report.
+10. Join six official Singapore macro and housing-market indicators using only
+    observations assumed to have been published before each rental month.
+11. Calculate address, town-flat-type, and flat-type rent histories using strictly earlier months.
+12. Restore original train and test order and validate row counts and schema parity.
+13. Save typed Parquet tables, a feature dictionary, and a build report.
 
 ## Final feature groups
 
@@ -139,6 +158,28 @@ The feature table contains one-month-lagged aggregates:
 
 These variables may act mainly as proxies for date. Keep them only when they improve several forward validation folds. The first available month is missing by design because no earlier month exists in the supplied data.
 
+### Official macroeconomic indicators
+
+The compact official macro panel contains:
+
+- CPI excluding accommodation, expressed as year-over-year inflation;
+- the 3-month compounded SORA level;
+- real GDP year-over-year growth;
+- the seasonally adjusted total unemployment rate;
+- HDB resale price-index year-over-year growth; and
+- private residential rental-index year-over-year growth.
+
+These variables were selected for distinct economic channels: general cost
+pressure, financing conditions, economic activity, labour demand, the HDB
+rent-versus-buy alternative, and broader rental-market pressure. They are joined
+by month using conservative availability dates, not by matching the observation
+period directly. `<data root>/macro/sg_macro_observations.csv` records the source period
+and availability assumption for every observation.
+
+Use these features as one ablation group. With only about 51 distinct training
+months, adding many related macro series would create more apparent predictors
+without adding comparable independent time-series evidence.
+
 ### Historical rental features
 
 The pipeline produces prior median, last observed rent, number of prior months, and months since the latest observation for:
@@ -169,9 +210,14 @@ One-hot encode moderate-cardinality categories and standardize continuous variab
 
 ```python
 from pathlib import Path
+import sys
 import pandas as pd
 
-processed = Path("data/processed")
+project_root = Path.cwd()
+sys.path.insert(0, str(project_root / "src"))
+from data_paths import resolve_data_root
+
+processed = resolve_data_root(project_root) / "processed"
 train = pd.read_parquet(processed / "train_features.parquet")
 test = pd.read_parquet(processed / "test_features.parquet")
 
@@ -226,6 +272,14 @@ They should be described as stable location proxies, not contemporaneous histori
 ### Target leakage
 
 Historical rents, rental indices, and target encodings must only use earlier months. If a new validation design is introduced, rebuild any label-derived transformations consistently. Never calculate a full-data target mean and then split the data.
+
+The official macro panel also requires point-in-time treatment. A value must have
+an assumed availability date strictly before the rental month. For a fixed-origin
+forecast, pass the same information cutoff to `download_macro_data.py` for every
+future row. Never join realized future macro values merely because they are
+available at the time of retrospective analysis. The downloader uses current
+revised official history rather than archived first-release vintages, so a small
+revision-risk caveat remains.
 
 ### Market trend and extrapolation
 
