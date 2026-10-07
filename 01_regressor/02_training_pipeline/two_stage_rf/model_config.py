@@ -1,0 +1,27 @@
+"""Best setup per training window for this model folder, chosen on the validation set (lowest log RMSE) by 02_tune_model.ipynb.
+Rerun that notebook to update it."""
+
+BEST_SETUPS = {'full_history/two_stage_rf': {'interactions': False,
+                               'lasso_alpha': 0.0001,
+                               'static_params': {'n_estimators': 200,
+                                                 'max_depth': 24,
+                                                 'min_samples_leaf': 10,
+                                                 'max_features': 128,
+                                                 'max_samples': 0.6},
+                               'validation': {'log_r2': 0.41359, 'dollar_r2': 0.47972, 'log_rmse': 0.17438, 'dollar_rmse': 462.82728}},
+ 'from_2023/two_stage_rf': {'interactions': False,
+                            'lasso_alpha': 0.01,
+                            'static_params': {'n_estimators': 200,
+                                              'max_depth': 14,
+                                              'min_samples_leaf': 10,
+                                              'max_features': 128,
+                                              'max_samples': 0.6},
+                            'validation': {'log_r2': 0.40094, 'dollar_r2': 0.46697, 'log_rmse': 0.17625, 'dollar_rmse': 468.4612}},
+ 'from_2023_06/two_stage_rf': {'interactions': False,
+                               'lasso_alpha': 0.0001,
+                               'static_params': {'n_estimators': 200,
+                                                 'max_depth': None,
+                                                 'min_samples_leaf': 20,
+                                                 'max_features': 96,
+                                                 'max_samples': 0.6},
+                               'validation': {'log_r2': 0.39617, 'dollar_r2': 0.47591, 'log_rmse': 0.17695, 'dollar_rmse': 464.51608}}}
