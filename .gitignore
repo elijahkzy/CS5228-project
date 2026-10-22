@@ -38,3 +38,6 @@ data/**
 # Graph-model data is stored under <data root>/location_graph.
 00_location_graph_data_mining/graph_feature_store/
 00_location_graph_data_mining/raw_graph_data/
+
+# All csv data
+*.csv
