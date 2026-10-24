@@ -1,4 +1,5 @@
-"""Shared helpers for the neural-network experiments (two-stage models): data loading, the networks, and saving the outputs of training and inference.
+"""Shared helpers for the neural-network experiments (`single_stage_models/neural_network`, `two_stage_models/neural_network`): data loading, the networks, and saving the
+outputs of training and inference. A notebook picks where its model and training statistics go with `use_results_dir`.
 Scoring, the growth benchmark and the charts live in `03_evaluation` (they only read the saved predictions).
 
 Data: the final feature tables of `final_report/data/features/final`, the same ones `02_modelling/baseline_features.ipynb` queries.
@@ -20,8 +21,7 @@ import pandas as pd
 import torch
 from torch import nn
 
-NN_DIR = Path(__file__).resolve().parent
-ROOT = NN_DIR.parents[2]                                     # final_report
+ROOT = Path(__file__).resolve().parents[1]                   # final_report
 sys.path.insert(0, str(ROOT))
 from data.feature_config_static import CATEGORICAL_COL, HOT_COL, ID_COL, LABEL, NUMERICAL_COL      # noqa: E402
 from data.feature_config_temporal import COE_FEATURE, MACRO_FEATURE, STOCK_FEATURE         # noqa: E402
@@ -189,14 +189,21 @@ def load_ffn(path):
 
 
 # ------------------------------------------------------------------------------------------------------------------------------- output folders
-RESULTS = NN_DIR / 'results'
-MODEL_DIR, TABLE_DIR = RESULTS / 'models', RESULTS / 'tables'                  # tables/<model type>/: the training statistics of each model type
+RESULTS = MODEL_DIR = TABLE_DIR = None                                          # set by use_results_dir: <results>/models, <results>/tables/<model type>/ (the training statistics)
 EVAL_PATH = ROOT / '03_evaluation'
 PRED_DIR = EVAL_PATH / 'predictions'                                           # predictions/{train,val,test}/<model>.csv, predictions/levels/<model>.csv
 SPLITS = ('train', 'val', 'test')
 
 
+def use_results_dir(path):
+    """Where this notebook saves its models (path/models) and training statistics (path/tables/<model type>/); the predictions always go to 03_evaluation."""
+    global RESULTS, MODEL_DIR, TABLE_DIR
+    RESULTS = Path(path).resolve()
+    MODEL_DIR, TABLE_DIR = RESULTS / 'models', RESULTS / 'tables'
+
+
 def ensure_output_dirs(model):
+    assert RESULTS is not None, 'call use_results_dir first'
     for folder in (MODEL_DIR, TABLE_DIR / model, *(PRED_DIR / d for d in (*SPLITS, 'levels'))):
         os.makedirs(folder, exist_ok=True)
 
