@@ -3,9 +3,9 @@
 A model takes part in the evaluation by saving, under `predictions/`:
 
 * `train/<model>.csv`, `val/<model>.csv`, `test/<model>.csv`: ROW_ID, the identifier columns of the static features (`ID_COL`) and `prediction` (the monthly rent in dollars).
-  ROW_ID is the position of the row in `data/original_dataset/train.csv` / `test.csv`, which is where the actual rents are read from. `val` holds the held-out rows
-  (months 2024-04..2025-03) predicted by a model fitted on the months before; `train` the train + validation rows predicted by the model fitted on all of them (in-sample);
-  `test` the 50,000 test rows.
+  ROW_ID is the position of the row in `data/original_dataset/train.csv` / `test.csv`, which is where the actual rents are read from. All three come from the same model, fitted once
+  on the train months (2021-01..2024-03): `train` holds the 114,841 train rows (in-sample), `val` the 35,158 validation rows (months 2024-04..2025-03, held out), `test` the 50,000 test rows.
+  The test set has no rents and a model is never refitted on the validation months, so the validation rows are the only held-out rents the models can be compared on.
 * optionally `levels/<model>.csv`: RENT_APPROVAL_DATE ('2025-01') and `level` for the months 2021-01..2026-07, the rent of a fixed set of flats (the train flats of 2025-01..03) as
   predicted for each month. It separates the growth of the market from the change in the flat mix, and feeds the growth benchmark.
 """
@@ -98,7 +98,7 @@ DOTTED = (0, (0.01, 2.6))
 SCENARIO_GROWTH = [0.005, 0.01, 0.02, 0.03]                        # government rental growth by mid-2026 relative to the 2025 level
 SCENARIO_COLOURS = ['#86b6ef', '#5598e7', '#2a78d6', '#1c5cab']    # one-hue ramp, darker = faster growth
 LINE = dict(lw=1.5, solid_capstyle='round', solid_joinstyle='round', dash_capstyle='round', dash_joinstyle='round')
-TRAIN_LABEL = 'train + validation (fitting months)'
+TRAIN_LABEL = 'train (fitting months)'
 
 
 def _style():
@@ -115,20 +115,21 @@ def _axes_style(ax):
 
 
 def models_chart(models, actual, title, out_path=None):
-    """models: list of dicts {'label', 'fit', 'forecast', 'colour'}: monthly mean predicted rent (PeriodIndex) for the train rows and the test rows.
-    actual: monthly mean actual rent of the train rows.
+    """models: list of dicts {'label', 'fit', 'validation', 'forecast', 'colour'}: monthly mean predicted rent (PeriodIndex) for the train rows, the validation rows (held out) and the test rows.
+    actual: monthly mean actual rent of the train and validation rows.
 
     Scenarios: only 2025-01..03 have rents, so their average actual rent is the 2025 level; each scenario grows geometrically from it at 2025-03 to
     level x (1 + g) at 2026-06 (mid-2026).
     """
     _style()
-    split = min(m['forecast'].index.min() for m in models)
+    first_val = min(m['validation'].index.min() for m in models)
+    split = min(m['forecast'].index.min() for m in models)                      # first test month
     level_2025 = actual.loc['2025-01':'2025-03'].mean()
     s_months = pd.period_range('2025-03', '2026-06', freq='M')
     steps = np.arange(len(s_months))
     scenarios = {g: pd.Series(level_2025 * (1 + g) ** (steps / steps[-1]), index=s_months) for g in SCENARIO_GROWTH}
 
-    everything = np.concatenate([actual.to_numpy()] + [m[k].to_numpy() for m in models for k in ('fit', 'forecast')] + [s.to_numpy() for s in scenarios.values()])
+    everything = np.concatenate([actual.to_numpy()] + [m[k].to_numpy() for m in models for k in ('fit', 'validation', 'forecast')] + [s.to_numpy() for s in scenarios.values()])
     ymin = 500 * (min(everything.min(), 2000) // 500)
     top = 500 * -(-max(everything.max(), 4000) // 500)
 
@@ -137,28 +138,32 @@ def models_chart(models, actual, title, out_path=None):
     x = lambda s: s.index.to_timestamp()
     full = (pd.Timestamp('2021-01-01'), pd.Timestamp('2026-12-31'))
     zoom = (pd.Timestamp('2024-01-01'), full[1])
+    t_val, t_test = first_val.to_timestamp(), split.to_timestamp()
 
     def frame(ax, subtitle, xlim):
         _axes_style(ax)
-        ax.axvspan(max(xlim[0], full[0]), split.to_timestamp(), color=BAND, zorder=0, lw=0)
-        ax.axvline(split.to_timestamp(), color=AXIS, lw=0.75, zorder=1)
+        ax.axvspan(max(xlim[0], full[0]), t_val, color=BAND, zorder=0, lw=0)
+        for t in (t_val, t_test):
+            ax.axvline(t, color=AXIS, lw=0.75, zorder=1)
         ax.set_title(subtitle, loc='left', fontsize=12, color=INK, pad=10, fontweight='semibold')
         ax.set_xlim(*xlim); ax.set_ylim(ymin, top)
         ax.xaxis.set_major_locator(mdates.YearLocator()); ax.xaxis.set_major_formatter(mdates.DateFormatter('%Y'))
         ax.yaxis.set_major_locator(mticker.MultipleLocator(500)); ax.yaxis.set_major_formatter(mticker.StrMethodFormatter('${x:,.0f}'))
         ytxt = ymin + 0.01 * (top - ymin)
         shaded_from = max(xlim[0], full[0])
-        ax.text(shaded_from + (split.to_timestamp() - shaded_from) / 2, ytxt, TRAIN_LABEL, color=MUTED, fontsize=9, va='bottom', ha='center')
-        ax.text(split.to_timestamp() + pd.Timedelta(days=20), ytxt, 'test forecast', color=MUTED, fontsize=9, va='bottom')
+        ax.text(shaded_from + (t_val - shaded_from) / 2, ytxt, TRAIN_LABEL, color=MUTED, fontsize=9, va='bottom', ha='center')
+        ax.text(t_val + (t_test - t_val) / 2, ytxt, 'validation', color=MUTED, fontsize=9, va='bottom', ha='center')
+        ax.text(t_test + pd.Timedelta(days=20), ytxt, 'test forecast', color=MUTED, fontsize=9, va='bottom')
 
     def draw(ax, end_in_legend):
         for m in models:
             end = m['forecast'].iloc[-1]
             label = f"{m['label']} (2026-07: ${end:,.0f})" if end_in_legend else m['label']
             ax.plot(x(m['fit']), m['fit'], color=m['colour'], label=label, zorder=4, **LINE)
+            ax.plot(x(m['validation']), m['validation'], color=m['colour'], zorder=4, **LINE)
             ax.plot(x(m['forecast']), m['forecast'], color=m['colour'], zorder=4, **LINE)
             ax.plot(x(m['forecast'])[-1:], m['forecast'].iloc[-1:], 'o', ms=6, color=m['colour'], mec=SURFACE, mew=1.5, zorder=5)
-        ax.plot(x(actual), actual, color=INK, lw=1.0, label='Actual rent (train flats)', zorder=6, solid_capstyle='round')
+        ax.plot(x(actual), actual, color=INK, lw=1.0, label='Actual rent (train + validation flats)', zorder=6, solid_capstyle='round')
 
     frame(axes[0], 'Whole period', full)
     draw(axes[0], end_in_legend=False)
@@ -185,8 +190,8 @@ def models_chart(models, actual, title, out_path=None):
     axes[1].legend(loc='upper left', frameon=False, fontsize=8.5, labelcolor=INK2, handlelength=2.4, columnspacing=1.2)
 
     fig.suptitle(title, x=0.05, ha='left', fontsize=14, color=INK, fontweight='semibold', y=0.995)
-    fig.text(0.05, 0.925, 'Monthly mean predicted rent vs. actual mean rent, one dollar axis for both panels. Shaded = months the models were fitted on (2021-01..2025-03); right of the '
-             'divider is a forecast for the test months.\nDotted blue lines are government growth scenarios (+g% by mid-2026 from the 2025 level, the average actual rent of 2025-01..03).',
+    fig.text(0.05, 0.925, 'Monthly mean predicted rent vs. actual mean rent, one dollar axis for both panels. Shaded = the months the models were fitted on (2021-01..2024-03); the validation months (2024-04..2025-03) '
+             'are held out;\nright of the second divider is a forecast for the test months. Dotted blue lines are government growth scenarios (+g% by mid-2026 from the 2025 level, the average actual rent of 2025-01..03).',
              fontsize=9, color=INK2, ha='left')
     fig.tight_layout(rect=(0, 0, 1, 0.92))
     if out_path:
@@ -195,8 +200,8 @@ def models_chart(models, actual, title, out_path=None):
 
 
 def validation_chart(models, actual, first_validation, title, out_path=None):
-    """Held-out run. models: list of dicts {'label', 'monthly', 'colour'}: monthly mean predicted rent (PeriodIndex) of the held-out predictions;
-    actual: monthly mean actual rent, from a few months before `first_validation` (a Period, shaded as fitted months) to the last validation month."""
+    """models: list of dicts {'label', 'monthly', 'colour'}: monthly mean predicted rent (PeriodIndex) from a few fitted months before `first_validation` (a Period) to the last
+    validation month: in-sample before it, held out from it. actual: monthly mean actual rent over the same months."""
     _style()
     fig, ax = plt.subplots(figsize=(10, 5), facecolor=SURFACE)
     _axes_style(ax)
@@ -222,8 +227,9 @@ def validation_chart(models, actual, first_validation, title, out_path=None):
     return fig
 
 
-def loss_chart(curves, title, floor=None, out_path=None):
-    """curves: list of dicts {'label', 'train', 'valid' (optional), 'colour'}: dollar RMSE by epoch (Series, index = epoch). floor: dotted reference line (a dollar RMSE, label)."""
+def loss_chart(curves, title, floor=None, used_epochs=None, out_path=None):
+    """curves: list of dicts {'label', 'train', 'valid' (optional), 'colour'}: dollar RMSE by epoch (Series, index = epoch). floor: dotted reference line (a dollar RMSE, label).
+    used_epochs: the number of epochs of the final model, marked when the curve runs longer."""
     _style()
     fig, ax = plt.subplots(figsize=(8, 3.6), facecolor=SURFACE)
     _axes_style(ax)
@@ -234,6 +240,8 @@ def loss_chart(curves, title, floor=None, out_path=None):
     if floor is not None:
         ax.axhline(floor[0], color=MUTED, lw=0.8, ls=':'); ax.annotate(floor[1], (ax.get_xlim()[1], floor[0]), xytext=(-4, 4), textcoords='offset points', ha='right', fontsize=8.5, color=MUTED)
     ax.yaxis.set_major_formatter(mticker.StrMethodFormatter('${x:,.0f}'))
+    if used_epochs is not None:
+        ax.axvline(used_epochs, color=AXIS, lw=0.75); ax.annotate(f'{used_epochs} epochs used', (used_epochs, ax.get_ylim()[1]), xytext=(4, -12), textcoords='offset points', fontsize=8.5, color=MUTED)
     ax.set_xlabel('epoch', color=MUTED, fontsize=9); ax.set_ylabel('RMSE ($)', color=MUTED, fontsize=9)
     ax.legend(frameon=False, fontsize=8.5, labelcolor=INK2)
     ax.set_title(title, loc='left', fontsize=11, color=INK, pad=8, fontweight='semibold')
