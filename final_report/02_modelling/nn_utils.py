@@ -10,8 +10,9 @@ Data: the final feature tables of `final_report/data/features/final`, the same o
   `data/original_dataset/train.csv` / `test.csv`) and the month. One feature row per rental: nothing has to be joined back.
 
 Months are counted from 2021-01 = 0, with the split of the final feature tables: train 0..38 (to 2024-03), validation 39..50 (2024-04..2025-03), test 50..66
-(2025-03..2026-07). Held-out runs fit on 0..38 and score 39..50; the final models are refitted on 0..50.
+(2025-03..2026-07). The models fit on 0..38 and score 39..50; they are not refitted on the validation months.
 """
+import copy
 import os
 import sys
 from pathlib import Path
@@ -116,11 +117,13 @@ def _predict(net, y_mean, y_std, Z_t, month_t, X_t=None, chunk=20000):
     return np.concatenate(out).astype(np.float64) * y_std + y_mean
 
 
-def fit_ffn(Z, months, y, X=None, valid=None, hidden=(64, 16), activation='leaky_relu', epochs=100, batch_size=2048, learning_rate=1e-3, weight_decay=0.0, seed=0):
+def fit_ffn(Z, months, y, X=None, valid=None, hidden=(64, 16), activation='leaky_relu', epochs=100, batch_size=2048, learning_rate=1e-3, weight_decay=0.0, seed=0, patience=None):
     """Feed-forward network from the scaled temporal features of a row's month (Z: 67 months x features) and, if X is given, its static features
     (rows x features) to the raw monthly rent. MSE in dollars: the target is standardised inside the loop.
 
     months: month of every row. valid: optional (months, X, y) of held-out rows, scored after every epoch (never trained on).
+    patience: early stopping on valid (required with it): training stops once the validation RMSE has not improved for `patience` epochs (`epochs` is then the maximum) and the
+    weights of the best epoch are kept. None: all `epochs` are trained and the last weights are kept.
     Returns a model dict (see predict_ffn / save_ffn) with the epoch losses in model['history'].
     """
     torch.manual_seed(seed)
@@ -138,7 +141,8 @@ def fit_ffn(Z, months, y, X=None, valid=None, hidden=(64, 16), activation='leaky
         v_month = torch.tensor(np.asarray(valid[0]), dtype=torch.long)
         v_X = None if valid[1] is None else torch.tensor(np.asarray(valid[1]), dtype=torch.float32)
         v_y = np.asarray(valid[2], dtype=np.float64)
-    history = []
+    assert patience is None or valid is not None, 'early stopping needs validation rows'
+    history, best_rmse, best_epoch, best_state = [], np.inf, None, None
     for epoch in range(1, epochs + 1):
         net.train()
         order = torch.randperm(len(month_t))
@@ -151,10 +155,17 @@ def fit_ffn(Z, months, y, X=None, valid=None, hidden=(64, 16), activation='leaky
         row = {'epoch': epoch, 'train_mse_std': total / len(order), 'train_rmse_dollar': float(np.sqrt(total / len(order)) * y_std)}
         if valid is not None:
             row['valid_rmse_dollar'] = float(np.sqrt(np.mean((_predict(net, y_mean, y_std, Z_t, v_month, v_X) - v_y) ** 2)))
+            if patience is not None and row['valid_rmse_dollar'] < best_rmse:
+                best_rmse, best_epoch, best_state = row['valid_rmse_dollar'], epoch, copy.deepcopy(net.state_dict())
         history.append(row)
+        if patience is not None and epoch - (best_epoch or 0) >= patience:
+            break
+    if best_state is not None:
+        net.load_state_dict(best_state)
     net.eval()
     config = {'n_static': n_static, 'n_temporal': Z_t.shape[1], 'hidden': list(hidden), 'activation': activation, 'epochs': epochs, 'batch_size': batch_size,
-              'learning_rate': learning_rate, 'weight_decay': weight_decay, 'seed': seed}
+              'learning_rate': learning_rate, 'weight_decay': weight_decay, 'seed': seed, 'patience': patience,
+              'epochs_run': len(history), 'best_epoch': len(history) if best_epoch is None else best_epoch}
     return {'net': net, 'y_mean': y_mean, 'y_std': y_std, 'config': config, 'history': pd.DataFrame(history)}
 
 

@@ -6,6 +6,8 @@ A model takes part in the evaluation by saving, under `predictions/`:
   ROW_ID is the position of the row in `data/original_dataset/train.csv` / `test.csv`, which is where the actual rents are read from. All three come from the same model, fitted once
   on the train months (2021-01..2024-03): `train` holds the 114,841 train rows (in-sample), `val` the 35,158 validation rows (months 2024-04..2025-03, held out), `test` the 50,000 test rows.
   The test set has no rents and a model is never refitted on the validation months, so the validation rows are the only held-out rents the models can be compared on.
+* `retrained_<model>` files, in the same three folders and `levels/`, are the same model refitted on the train + validation rows (2021-01..2025-03), with the same row sets: their `val` rows are
+  in-sample, not held out, so `list_models()` leaves them out; they are the predictions sent to Kaggle (`test/retrained_<model>.csv`).
 * optionally `levels/<model>.csv`: RENT_APPROVAL_DATE ('2025-01') and `level` for the months 2021-01..2026-07, the rent of a fixed set of flats (the train flats of 2025-01..03) as
   predicted for each month. It separates the growth of the market from the change in the flat mix, and feeds the growth benchmark.
 """
@@ -36,9 +38,13 @@ def month_label(m):
 
 
 # ------------------------------------------------------------------------------------------------------------------------------------ data
-def list_models():
-    """The models with a test prediction file."""
-    return sorted(p.stem for p in (PRED_DIR / 'test').glob('*.csv'))
+RETRAINED_PREFIX = 'retrained_'
+
+
+def list_models(retrained=False):
+    """The models with a test prediction file. The `retrained_<model>` files (the model refitted on the train + validation rows, from
+    `02_modelling/neural_network_retraining`) are left out unless `retrained`: their validation rows are in-sample, so they cannot be scored as held-out models."""
+    return sorted(p.stem for p in (PRED_DIR / 'test').glob('*.csv') if retrained or not p.stem.startswith(RETRAINED_PREFIX))
 
 
 def load_actuals():
@@ -229,7 +235,7 @@ def validation_chart(models, actual, first_validation, title, out_path=None):
 
 def loss_chart(curves, title, floor=None, used_epochs=None, out_path=None):
     """curves: list of dicts {'label', 'train', 'valid' (optional), 'colour'}: dollar RMSE by epoch (Series, index = epoch). floor: dotted reference line (a dollar RMSE, label).
-    used_epochs: the number of epochs of the final model, marked when the curve runs longer."""
+    used_epochs: the epoch whose weights the model keeps (early stopping), marked when the curve runs longer."""
     _style()
     fig, ax = plt.subplots(figsize=(8, 3.6), facecolor=SURFACE)
     _axes_style(ax)
@@ -241,7 +247,7 @@ def loss_chart(curves, title, floor=None, used_epochs=None, out_path=None):
         ax.axhline(floor[0], color=MUTED, lw=0.8, ls=':'); ax.annotate(floor[1], (ax.get_xlim()[1], floor[0]), xytext=(-4, 4), textcoords='offset points', ha='right', fontsize=8.5, color=MUTED)
     ax.yaxis.set_major_formatter(mticker.StrMethodFormatter('${x:,.0f}'))
     if used_epochs is not None:
-        ax.axvline(used_epochs, color=AXIS, lw=0.75); ax.annotate(f'{used_epochs} epochs used', (used_epochs, ax.get_ylim()[1]), xytext=(4, -12), textcoords='offset points', fontsize=8.5, color=MUTED)
+        ax.axvline(used_epochs, color=AXIS, lw=0.75); ax.annotate(f'best epoch {used_epochs}', (used_epochs, ax.get_ylim()[1]), xytext=(4, -12), textcoords='offset points', fontsize=8.5, color=MUTED)
     ax.set_xlabel('epoch', color=MUTED, fontsize=9); ax.set_ylabel('RMSE ($)', color=MUTED, fontsize=9)
     ax.legend(frameon=False, fontsize=8.5, labelcolor=INK2)
     ax.set_title(title, loc='left', fontsize=11, color=INK, pad=8, fontweight='semibold')
