@@ -22,6 +22,7 @@ Thumbs.db
 *.key
 *.pem
 keys.txt
+.claude
 
 # Local installer downloads
 gh_*_windows_amd64.msi
