@@ -26,11 +26,13 @@ import requests
 import numpy as np
 import pandas as pd
 
-ROOT = "toy_data/graph_data"
-AUX = "toy_data/auxiliary"
-STN_CSV = f"{AUX}/sg-mrt-stations.csv"
-COLLAPSED_CSV = f"{ROOT}/sg-mrt-edges-collapsed.csv"
-OUT_CSV = f"{ROOT}/sg-mrt-edges-weighted.csv"
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).resolve().parents[2]))      # final_report: data/config.py holds every path of the project
+from data import config as cfg      # noqa: E402
+STN_CSV = str(cfg.MRT_STATIONS_CSV)
+COLLAPSED_CSV = str(cfg.MRT_EDGES_COLLAPSED_CSV)
+OUT_CSV = str(cfg.MRT_EDGES_WEIGHTED_CSV)
 
 # Public Overpass mirrors, tried in order per attempt (failover). A missing /
 # generic User-Agent gets a 406 from these endpoints, so we send a descriptive

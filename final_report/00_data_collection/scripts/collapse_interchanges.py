@@ -14,10 +14,13 @@ Output: sg-mrt-edges-collapsed.csv with src_station, dst_station (both NAMEs).
 
 import pandas as pd
 
-ROOT = "toy_data/auxiliary"
-EDGES_CSV = f"{ROOT}/sg-mrt-edges.csv"
-STN_CSV = f"{ROOT}/sg-mrt-stations.csv"
-OUT_EDGES = f"{ROOT}/sg-mrt-edges-collapsed.csv"
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).resolve().parents[2]))      # final_report: data/config.py holds every path of the project
+from data import config as cfg      # noqa: E402
+EDGES_CSV = str(cfg.MRT_EDGES_CSV)
+STN_CSV = str(cfg.MRT_STATIONS_CSV)
+OUT_EDGES = str(cfg.MRT_EDGES_COLLAPSED_CSV)
 
 
 def main():

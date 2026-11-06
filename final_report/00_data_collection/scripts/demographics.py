@@ -18,11 +18,14 @@ import time
 import requests
 import pandas as pd
 
-ROOT = "toy_data/graph_data"
-PA_CSV = "toy_data/zoning_data/planning_area.csv"
-CACHE = f"{ROOT}/_onemap_cache"
-OUT = f"{ROOT}/sg-demographics-planning-area.csv"
-KEYS = "data_collection_scripts/keys.txt"
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).resolve().parents[2]))      # final_report: data/config.py holds every path of the project
+from data import config as cfg      # noqa: E402
+PA_CSV = str(cfg.PLANNING_AREA_CSV)
+CACHE = str(cfg.ONEMAP_CACHE_DIR)
+OUT = str(cfg.DEMOGRAPHICS_PLANNING_AREA_CSV)
+KEYS = str(cfg.KEYS_FILE)
 BASE = "https://www.onemap.gov.sg/api/public/popapi/"
 YEAR = "2020"
 

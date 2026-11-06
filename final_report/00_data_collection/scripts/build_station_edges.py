@@ -17,9 +17,12 @@ from itertools import combinations
 
 import pandas as pd
 
-ROOT = "toy_data/auxiliary"
-IN_CSV = f"{ROOT}/sg-mrt-stations.csv"
-OUT_CSV = f"{ROOT}/sg-mrt-edges.csv"
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).resolve().parents[2]))      # final_report: data/config.py holds every path of the project
+from data import config as cfg      # noqa: E402
+IN_CSV = str(cfg.MRT_STATIONS_CSV)
+OUT_CSV = str(cfg.MRT_EDGES_CSV)
 
 # CODE = line-prefix + optional number + optional single-letter suffix.
 #   ns10  -> ('ns', 10, '')     ew9   -> ('ew', 9, '')

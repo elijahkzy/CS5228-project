@@ -1,3 +1,7 @@
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).resolve().parents[2]))      # final_report: data/config.py holds every path of the project
+from data import config as cfg      # noqa: E402
 import requests
 import requests
 import pandas as pd
@@ -33,4 +37,4 @@ if __name__=="__main__":
             all_bus_stops += results
     #Parse JSON to print
     df = pd.DataFrame(all_bus_stops)
-    df.to_csv('sg-bus-stops.csv')
+    df.to_csv(cfg.BUS_STOPS_CSV)

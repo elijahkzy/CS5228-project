@@ -19,10 +19,13 @@ import time
 import requests
 import pandas as pd
 
-ROOT = "toy_data/graph_data"
-MALLS_CSV = "toy_data/auxiliary/sg-shopping-malls.csv"
-CACHE = f"{ROOT}/_wiki_cache"
-OUT = f"{ROOT}/sg-mall-features-wikipedia.csv"
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).resolve().parents[2]))      # final_report: data/config.py holds every path of the project
+from data import config as cfg      # noqa: E402
+MALLS_CSV = str(cfg.SHOPPING_MALLS_CSV)
+CACHE = str(cfg.WIKI_CACHE_DIR)
+OUT = str(cfg.MALL_FEATURES_WIKIPEDIA_CSV)
 API = "https://en.wikipedia.org/w/api.php"
 HEADERS = {"User-Agent": "sg-mrt-graph/1.0 (non-commercial research; mall features)"}
 

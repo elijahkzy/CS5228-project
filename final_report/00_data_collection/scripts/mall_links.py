@@ -16,7 +16,7 @@ network and connect a station to a nearby mall (<= RADIUS_M straight-line) by:
 
 Each linkage is tagged with the method used, per request.
 
-Output: toy_data/graph_data/sg-station-mall-links.csv
+Output: cfg.STATION_MALL_LINKS_CSV (data/features/raw/collected_data/mrt_data/sg-station-mall-links.csv)
         (station_name, mall_name, straight_m, method, connection_type, path_m)
 """
 
@@ -28,12 +28,14 @@ import numpy as np
 import pandas as pd
 import networkx as nx
 
-ROOT = "toy_data/graph_data"
-AUX = "toy_data/auxiliary"
-NODES_CSV = f"{ROOT}/sg-mrt-nodes.csv"
-MALLS_CSV = f"{AUX}/sg-shopping-malls.csv"
-OUT_CSV = f"{ROOT}/sg-station-mall-links.csv"
-OSM_CACHE = f"{ROOT}/_osm_cache/sheltered_network.json"
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).resolve().parents[2]))      # final_report: data/config.py holds every path of the project
+from data import config as cfg      # noqa: E402
+NODES_CSV = str(cfg.MRT_NODES_CSV)
+MALLS_CSV = str(cfg.SHOPPING_MALLS_CSV)
+OUT_CSV = str(cfg.STATION_MALL_LINKS_CSV)
+OSM_CACHE = str(cfg.OSM_SHELTERED_NETWORK_JSON)
 
 BBOX = (1.20, 103.58, 1.48, 104.05)
 RADIUS_M = 400.0      # max straight-line station->mall to even consider

@@ -23,10 +23,13 @@ import requests
 import numpy as np
 import pandas as pd
 
-ROOT = "toy_data/graph_data"
-NODES_CSV = f"{ROOT}/sg-mrt-nodes.csv"
-CACHE_DIR = f"{ROOT}/_pv_cache"          # raw monthly CSVs, fetched at most once
-KEYS_TXT = "keys.txt"
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).resolve().parents[2]))      # final_report: data/config.py holds every path of the project
+from data import config as cfg      # noqa: E402
+NODES_CSV = str(cfg.MRT_NODES_CSV)
+CACHE_DIR = str(cfg.PV_CACHE_DIR)          # raw monthly CSVs, fetched at most once
+KEYS_TXT = str(cfg.KEYS_FILE)
 PV_TRAIN = "https://datamall2.mytransport.sg/ltaodataservice/PV/Train"
 
 # The PV/Train endpoint has its own strict per-endpoint quota (separate from the
@@ -168,7 +171,7 @@ def build_month(nodes, key, date):
     out = pd.concat([nodes.reset_index(drop=True), attached], axis=1)
     out["pv_matched"] = [j is not None for j in matched_idx]
 
-    out_path = f"{ROOT}/sg-mrt-nodes-features-{date}.csv"
+    out_path = cfg.MRT_NODE_FEATURES_CSV_TEMPLATE.format(date=date)
     out.to_csv(out_path, index=False)
 
     used = {j for j in matched_idx if j is not None}

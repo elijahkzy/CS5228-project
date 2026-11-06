@@ -1,3 +1,7 @@
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).resolve().parents[2]))      # final_report: data/config.py holds every path of the project
+from data import config as cfg      # noqa: E402
 import requests
 import geopy.distance
 import pandas as pd
@@ -77,6 +81,6 @@ if __name__ == '__main__':
     location = coords_dict[argv[1]]
     compute_in_parallel = argv[2] == 'y'
 
-    hdb_df = pd.read_csv("hdb_df_for_travel_time.csv")[['street','approx_lat','approx_lon']]
+    hdb_df = pd.read_csv(cfg.HDB_TRAVEL_TIME_INPUT_CSV)[['street','approx_lat','approx_lon']]
     hdb_df_dist = get_travel_time_df(hdb_df, location, compute_in_parallel)
-    hdb_df_dist.to_csv(f"hdb_df_{argv[1]}_dist.csv",index=False)
+    hdb_df_dist.to_csv(cfg.PROCESSED_DIR / f"hdb_df_{argv[1]}_dist.csv",index=False)

@@ -11,6 +11,7 @@ A model takes part in the evaluation by saving, under `predictions/`:
 * optionally `levels/<model>.csv`: RENT_APPROVAL_DATE ('2025-01') and `level` for the months 2021-01..2026-07, the rent of a fixed set of flats (the train flats of 2025-01..03) as
   predicted for each month. It separates the growth of the market from the change in the flat mix, and feeds the growth benchmark.
 """
+import sys
 from pathlib import Path
 
 import matplotlib.dates as mdates
@@ -19,10 +20,13 @@ import matplotlib.ticker as mticker
 import numpy as np
 import pandas as pd
 
-EVAL_DIR = Path(__file__).resolve().parent
-ROOT = EVAL_DIR.parent                                     # final_report
-PRED_DIR, CHART_DIR, TABLE_DIR = EVAL_DIR / 'predictions', EVAL_DIR / 'charts', EVAL_DIR / 'tables'
-ORIGINAL_PATH = ROOT / 'data' / 'original_dataset'
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))     # final_report: data/config.py holds every path of the project
+from data import config as cfg                                   # noqa: E402
+
+EVAL_DIR = cfg.EVALUATION_DIR
+ROOT = cfg.ROOT                                            # final_report
+PRED_DIR, CHART_DIR, TABLE_DIR = cfg.PREDICTIONS_DIR, cfg.CHARTS_DIR, cfg.TABLES_DIR
+ORIGINAL_PATH = cfg.ORIGINAL_DIR
 LABEL = 'MONTHLY_RENT'
 Q1_2025, MID_2026, MONTHS_2026 = [48, 49, 50], 65, list(range(60, 67))      # month indices from 2021-01 = 0: 2025-01..03, 2026-06, 2026-01..07
 GROWTH_BAND = (0.005, 0.03)                                                  # government rental growth by mid-2026 relative to the 2025 level

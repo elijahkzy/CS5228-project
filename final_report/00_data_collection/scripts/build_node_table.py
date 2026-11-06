@@ -19,9 +19,12 @@ Output: sg-mrt-nodes.csv, one row per NAME.
 import re
 import pandas as pd
 
-ROOT = "toy_data/auxiliary"
-STN_CSV = f"{ROOT}/sg-mrt-stations.csv"
-OUT_NODES = f"{ROOT}/sg-mrt-nodes.csv"
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).resolve().parents[2]))      # final_report: data/config.py holds every path of the project
+from data import config as cfg      # noqa: E402
+STN_CSV = str(cfg.MRT_STATIONS_CSV)
+OUT_NODES = str(cfg.MRT_NODES_CSV)
 
 _CODE_RE = re.compile(r"^([a-z]+?)(\d+)([a-z]*)$")
 

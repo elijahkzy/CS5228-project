@@ -24,11 +24,12 @@ from torch import nn
 
 ROOT = Path(__file__).resolve().parents[1]                   # final_report
 sys.path.insert(0, str(ROOT))
+from data import config as cfg                                                                     # noqa: E402  every path of the project
 from data.feature_config_static import CATEGORICAL_COL, HOT_COL, ID_COL, LABEL, NUMERICAL_COL      # noqa: E402
 from data.feature_config_temporal import COE_FEATURE, MACRO_FEATURE, STOCK_FEATURE         # noqa: E402
 
-FINAL_PATH = ROOT / 'data' / 'features' / 'final'
-ORIGINAL_PATH = ROOT / 'data' / 'original_dataset'
+FINAL_PATH = cfg.FINAL_DIR
+ORIGINAL_PATH = cfg.ORIGINAL_DIR
 TEMPORAL_FEATURES = STOCK_FEATURE + COE_FEATURE + MACRO_FEATURE
 N_MONTHS = 67
 TRAIN_LAST, VALIDATION_LAST, TEST_FIRST = 38, 50, 50
@@ -201,8 +202,8 @@ def load_ffn(path):
 
 # ------------------------------------------------------------------------------------------------------------------------------- output folders
 RESULTS = MODEL_DIR = TABLE_DIR = None                                          # set by use_results_dir: <results>/models, <results>/tables/<model type>/ (the training statistics)
-EVAL_PATH = ROOT / '03_evaluation'
-PRED_DIR = EVAL_PATH / 'predictions'                                           # predictions/{train,val,test}/<model>.csv, predictions/levels/<model>.csv
+EVAL_PATH = cfg.EVALUATION_DIR
+PRED_DIR = cfg.PREDICTIONS_DIR                                          # predictions/{train,val,test}/<model>.csv, predictions/levels/<model>.csv
 SPLITS = ('train', 'val', 'test')
 
 

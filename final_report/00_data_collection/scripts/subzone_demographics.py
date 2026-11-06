@@ -18,9 +18,12 @@ import re
 import requests
 import pandas as pd
 
-ROOT = "toy_data/graph_data"
-SUBZONE_CSV = "toy_data/zoning_data/subzone.csv"
-OUT = f"{ROOT}/sg-demographics-subzone.csv"
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).resolve().parents[2]))      # final_report: data/config.py holds every path of the project
+from data import config as cfg      # noqa: E402
+SUBZONE_CSV = str(cfg.SUBZONE_CSV)
+OUT = str(cfg.DEMOGRAPHICS_SUBZONE_CSV)
 CKAN = "https://data.gov.sg/api/action/datastore_search"
 RID = "d_d95ae740c0f8961a0b10435836660ce0"   # Census 2020, PA/subzone x age x sex
 YEAR = 2020

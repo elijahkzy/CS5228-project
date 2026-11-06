@@ -25,10 +25,12 @@ import time
 import requests
 import pandas as pd
 
-ROOT = "toy_data/graph_data"
-AUX = "toy_data/auxiliary"
-SCHOOLS_CSV = f"{AUX}/sg-schools.csv"
-CACHE_DIR = f"{ROOT}/_school_cache"
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).resolve().parents[2]))      # final_report: data/config.py holds every path of the project
+from data import config as cfg      # noqa: E402
+SCHOOLS_CSV = str(cfg.SCHOOLS_CSV)
+CACHE_DIR = str(cfg.SCHOOL_CACHE_DIR)
 BASE = "https://www.moe.gov.sg/schoolfinder/schooldetail/"
 SITEMAP = "https://www.moe.gov.sg/sitemap.xml"
 HEADERS = {"User-Agent": "sg-mrt-graph/1.0 (non-commercial research; school features)"}
@@ -198,7 +200,7 @@ def main():
         if not rows:
             continue
         out = pd.DataFrame(rows)
-        path = f"{ROOT}/sg-schools-{name}.csv"
+        path = cfg.SCHOOL_CSV_TEMPLATE.format(name=name)
         out.to_csv(path, index=False)
         sc = out.scrape_status.value_counts().to_dict()
         stats[name] = (len(out), sc, path)

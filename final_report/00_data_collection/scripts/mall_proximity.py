@@ -16,12 +16,14 @@ import math
 import numpy as np
 import pandas as pd
 
-ROOT = "toy_data/graph_data"
-AUX = "toy_data/auxiliary"
-NODES_CSV = f"{ROOT}/sg-mrt-nodes.csv"
-MALLS_CSV = f"{AUX}/sg-shopping-malls.csv"
-OUT_LINKS = f"{ROOT}/sg-station-mall-proximity.csv"
-OUT_COUNTS = f"{ROOT}/sg-station-mall-counts.csv"
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).resolve().parents[2]))      # final_report: data/config.py holds every path of the project
+from data import config as cfg      # noqa: E402
+NODES_CSV = str(cfg.MRT_NODES_CSV)
+MALLS_CSV = str(cfg.SHOPPING_MALLS_CSV)
+OUT_LINKS = str(cfg.STATION_MALL_PROXIMITY_CSV)
+OUT_COUNTS = str(cfg.STATION_MALL_COUNTS_CSV)
 
 WALK_M = 500.0
 LAT0 = 1.35
